@@ -1,3 +1,3 @@
 ﻿# Problems
 
-Optimization problem colletions of NTU ME SOLab.
+Optimization problem collections of NTU ME SOLab.

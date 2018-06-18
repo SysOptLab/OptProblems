@@ -17,9 +17,9 @@ SPEEDREDUCER
 
 import math
 
-class Setup:
+class Cons:
 
-    """Setup problem with name.
+    """Constrained optimization problem.
 
     Args:
         name (str): Problem's name.
@@ -388,7 +388,7 @@ class Setup:
 
 if __name__ == '__main__':
 
-    problem = Setup('GOLDPR')
+    problem = Cons('GOLDPR')
     x0 = [0.0, 0.0]
 
     print('obj(x0) = {}'.format(problem.obj(x0)))

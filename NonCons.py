@@ -6,9 +6,9 @@ GOLDPR
 
 import math
 
-class Setup:
+class NonCons:
 
-    """Setup problem with name.
+    """Non-constrained optimization problem.
 
     Args:
         name (str): Problem's name.
@@ -68,7 +68,7 @@ class Setup:
 
 if __name__ == '__main__':
 
-    problem = Setup('GOLDPR')
+    problem = NonCons('GOLDPR')
     x0 = [0.0, 0.0]
 
     print('obj(x0) = {}'.format(problem.obj(x0)))
