@@ -1,5 +1,8 @@
 """
 Constrained Optimization Problem Collections:
+
+https://www.sfu.ca/~ssurjano/optimization.html
+
 ALKYLATION
 CAMEL
 FUNC2D
@@ -16,6 +19,7 @@ SPEEDREDUCER
 """
 
 import math
+import numpy as np
 
 class Cons:
 
