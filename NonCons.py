@@ -32,6 +32,11 @@ HARTMANN 3-D
 import math
 import numpy as np
 
+if __package__:
+    from . import debug_plot
+else:
+    import debug_plot
+
 class NonCons:
 
     """Non-constrained optimization problem.
@@ -563,7 +568,7 @@ class NonCons:
             self.cns = None
             self.lb = [-2, -2]
             self.ub = [2, 2]
-            self.xopt = [0, 1]
+            self.xopt = [0, -1]
             self.fopt = 3.0
 
         elif name == 'HARTMANN 3-D':
@@ -610,9 +615,13 @@ class NonCons:
         else:
             raise "Unkown problem name."
 
+    def plot(self):
+        debug_plot.plot(self)
+
     def __str__(self):
         return self.__doc__
 
+# --
 
 if __name__ == '__main__':
 
