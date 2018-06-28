@@ -130,7 +130,7 @@ class NonCons:
 
             self.obj = obj
             self.cns = None
-            self.lb = [-40.0, -40.0]
+            self.lb = [-39.0, -39.0] # original bound = -40
             self.ub = [40.0, 40.0]
             self.xopt = [0.0, 0.0]
             self.fopt = 0.0
@@ -212,7 +212,7 @@ class NonCons:
 
             self.obj = obj
             self.cns = None
-            self.lb = [-2, -2]
+            self.lb = [-1.9, -1.9] # original bound = -2.0
             self.ub = [2, 2]
             self.xopt = [0, 0]
             self.fopt = -1.0
@@ -299,7 +299,7 @@ class NonCons:
 
             self.obj = obj
             self.cns = None
-            self.lb = [-10, -10]
+            self.lb = [-9, -9] # original bound = -10.0
             self.ub = [10, 10]
             self.xopt = [0, 0]
             self.fopt = 0.0
@@ -403,7 +403,7 @@ class NonCons:
 
             self.obj = obj
             self.cns = None
-            self.lb = [-10, -10]
+            self.lb = [-9, -9] # origin bound = -10.0
             self.ub = [10, 10]
             self.xopt = [1, 1]
             self.fopt = 0.0
@@ -460,7 +460,7 @@ class NonCons:
 
             self.obj = obj
             self.cns = None
-            self.lb = [-5, -5]
+            self.lb = [-4, -4] # original bound = -5.0
             self.ub = [5, 5]
             self.xopt = [0, 0]
             self.fopt = 0.0
@@ -486,7 +486,7 @@ class NonCons:
 
             self.obj = obj
             self.cns = None
-            self.lb = [-5, -5]
+            self.lb = [-4, -4] # original bound = -5.0
             self.ub = [5, 5]
             self.xopt = [0, 0]
             self.fopt = 0.0
@@ -567,7 +567,7 @@ class NonCons:
                 x2 = x[1]
                 sum1 = 0
                 sum2 = 0
-                for ii in range(1,6):
+                for ii in range(1, 6):
                     new1 = ii * math.cos((ii+1)*x1+ii)
                     new2 = ii * math.cos((ii+1)*x2+ii)
                     sum1 = sum1 + new1
@@ -608,7 +608,7 @@ class NonCons:
 
             self.obj = obj
             self.cns = None
-            self.lb = [-100.0, -100.0]
+            self.lb = [-99.0, -99.0] # original bound = -100.0
             self.ub = [100.0, 100.0]
             self.xopt = [0.0, 0.0]
             self.fopt = 0.0
@@ -675,8 +675,8 @@ class NonCons:
 
             self.obj = obj
             self.cns = None
-            self.lb = (np.ones(dimensions)*-65.536).tolist()
-            self.ub = (np.ones(dimensions)*65.536).tolist()
+            self.lb = (np.ones(dimensions)*-59.0).tolist()
+            self.ub = (np.ones(dimensions)*60.0).tolist()
             self.xopt = [0.0, 0.0] # [..., 0.0]
             self.fopt = 0.0
 
@@ -1295,11 +1295,16 @@ class NonCons:
             """
 
             def obj(x):
-                g1 = 19.0 - 14.0*x[0] + 3.0*x[0]**2 - 14.0*x[1] + 6.0*x[0]*x[1] + 3.0*x[1]**2
-                g2 = 18.0 - 32.0*x[0] + 12.0*x[0]**2 + 48.0*x[1] - 36.0*x[0]*x[1] + 27.0*x[1]**2
-                f = (1.0 + ((x[0] + x[1] + 1.0)**2)*g1) * (30.0 + ((2.0*x[0] - 3.0*x[1])**2)*g2)
-                f = math.log(f)
-                return f
+                x1 = x[0]
+                x2 = x[1]
+                fact1a = (x1 + x2 + 1)**2
+                fact1b = 19 - 14*x1 + 3*x1**2 - 14*x2 + 6*x1*x2 + 3*x2**2
+                fact1 = 1 + fact1a*fact1b
+                fact2a = (2*x1 - 3*x2)**2
+                fact2b = 18 - 32*x1 + 12*x1**2 + 48*x2 - 36*x1*x2 + 27*x2**2
+                fact2 = 30 + fact2a*fact2b
+                y = fact1*fact2
+                return y
 
             self.obj = obj
             self.cns = None
@@ -1435,11 +1440,10 @@ class NonCons:
                         xj = x[jj-1]
                         Aij = A[ii-1, jj-1]
                         Pij = P[ii-1, jj-1]
-                        inner = inner + Aij*(xj-Pij)**2
-                    new = alpha[ii-1] * math.exp(-inner)
-                    outer = outer + new
+                        inner = inner + Aij*((xj-Pij)**2)
+                    outer = outer + alpha[ii-1] * math.exp(-inner)
 
-                y = -(2.58 + outer) / 1.94;
+                y = -(2.58 + outer) / 1.94
                 return y
 
             self.obj = obj
