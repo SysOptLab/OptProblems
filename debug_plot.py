@@ -17,10 +17,14 @@ def plot(problem):
     # -- verification
 
     try:
-        print('fopt = {}'.format(fopt))
         print('obj(xopt) = {}'.format(obj(xopt)))
     except:
-        pass
+        print('obj(xopt) = {}'.format(obj(xopt[0])))
+
+    try:
+        print('xopt = {}'.format(xopt))
+    except:
+        print('xopt = {}'.format(xopt[0]))
 
     # -- plot
 
@@ -65,8 +69,11 @@ def plot(problem):
             for i in range(dim):
                 plt.contour(x1_plot, x2_plot, g_plot[:,:,i], colors="k", levels=0, linestyles='dotted', lw=0.1)
 
-        if xopt is not None:
-            plt.plot(xopt[0], xopt[1], '*r')
+        if not isinstance(xopt[0], float):
+            for xopt_i in xopt:
+                plt.plot(xopt_i[0], xopt_i[1], '*r')
+        else:
+            plt.plot(xopi[0], xopt[1], '*r')
 
         plt.axis( [ lb[0], ub[0], lb[1], ub[1] ] )
         plt.axis('equal')
@@ -84,6 +91,7 @@ def plot(problem):
         ax.view_init(50, 235)
 
     else:
+        print('Problem\'s dimensions is greater than 2.')
         pass
 
     plt.show()

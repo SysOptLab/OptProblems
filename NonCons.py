@@ -257,16 +257,17 @@ class NonCons:
             """
 
             def obj(x):
-                term1 = math.sin(10.0*math.pi*x) / (2.0*x)
+                x = np.array(x)
+                term1 = np.sin(10.0*np.pi*x) / (2.0*x)
                 term2 = (x-1.0)**4
-                f = term1 + term2
-                return f[0]
+                f = term1[0] + term2[0]
+                return f
 
             self.obj = obj
             self.cns = None
             self.lb = [0.5]
             self.ub = [2.5]
-            self.xopt = 0.54856368
+            self.xopt = [0.54856368]
             self.fopt = -0.8690111349647177
 
         elif name == '1.7 Griewank Function':
@@ -1123,17 +1124,7 @@ class NonCons:
             """
 
             def obj(x):
-                x1 = x[0]
-                x2 = x[1]
-                t = 1.0 / (8.0*math.pi)
-                s = 10.0
-                r = 6.0
-                c = 5.0/math.pi
-                b = 5.1 / (4.0*math.pi**2)
-                a = 1.0
-                term1 = a * (x2 - b*x1**2.0 + c*x1 - r)**2.0
-                term2 = s*(1-t)*math.cos(x1)
-                y = term1 + term2 + s
+                y = (x[1]-(5.1/(4*math.pi**2))*x[0]**2+5*x[0]/math.pi-6)**2+10*(1-1/(8*math.pi))*np.cos(x[0])+10;
                 return y
 
             self.obj = obj
