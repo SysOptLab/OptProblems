@@ -3,7 +3,6 @@ Constrained Optimization Problem Collections:
 
 1. http://www-optima.amp.i.kyoto-u.ac.jp/member/student/hedar/Hedar_files/TestGO.htm
 
-1.1 G1 Problem
 1.2 G2 Problem
 1.3 G3 Problem
 1.4 G4 Problem
@@ -12,8 +11,6 @@ Constrained Optimization Problem Collections:
 1.8 G8 Problem
 1.9 G9 Problem
 1.10 G10 Problem
-1.12 G12 Problem
-1.14 Welded Beam Design Problem
 
 2. Others
 
@@ -23,13 +20,11 @@ Constrained Optimization Problem Collections:
 2.4 GOLDPR
 2.5 GOMEZ
 2.6 HS23
-2.7 HS66
 2.8 KS224
 2.9 KS250
 2.10 KS346
 2.11 NEWBRANIN
 2.12 PRES
-2.13 SPEEDREDUCER
 
 """
 
@@ -54,48 +49,13 @@ class Cons:
 
     def __init__(self, name, dimensions=2):
 
-        if name == '1.1 G1 Problem':
-            
-            self.__doc__ = """
-            Dimensions: 13
-            """
-
-            def obj(x):
-                x1 = np.array(x[0:3])
-                x2 = np.array(x[4:12])
-                y = 5.0*sum(x1)-5.0*sum(x1*x1)-sum(x2)
-                return y
-
-            def cns(x):
-                g1 = 2.0*x[0]+2.0*x[1]+x[9]+x[10]-10.0
-                g2 = 2.0*x[0]+2.0*x[2]+x[9]+x[11]-10.0
-                g3 = 2.0*x[1]+2.0*x[2]+x[10]+x[11]-10.0
-                g4 = -8.0*x[0]+x[9]
-                g5 = -8.0*x[1]+x[10]
-                g6 = -8.0*x[2]+x[11]
-                g7 = -2.0*x[3]-x[4]+x[9]
-                g8 = -2.0*x[5]-x[6]+x[10]
-                g9 = -2.0*x[7]-x[8]+x[11]
-                return np.array([g1, g2, g3, g4, g5, g6, g7, g8, g9]).tolist()
-            
-            self.obj = obj
-            self.cns = cns
-            self.lb = np.zeros(13).tolist()
-            self.ub = np.ones(13)
-            self.ub[9:12] = 100.0
-            self.ub = self.ub.tolist()
-            self.xopt = np.ones(13)
-            self.xopt[9:12] = 3.0
-            self.xopt = self.xopt.tolist()
-            self.fopt = -15.0
-
-        elif name == '1.2 G2 Problem':
+        if name == '1.2 G2 Problem':
             
             self.__doc__ = """
             Dimensions: 20
             """
             
-            raise TypeError('Problem solution was not ready.')
+            # raise TypeError('Problem solution was not ready.')
 
             def obj(x):
                 x = np.array(x)
@@ -244,7 +204,7 @@ class Cons:
             self.lb = [0, 0]
             self.ub = [10, 10]
             self.xopt = [1.2279713, 4.2453733]
-            self.fopt = 0.095825
+            self.fopt = -0.095825
 
         elif name == '1.9 G9 Problem':
             
@@ -299,75 +259,7 @@ class Cons:
             self.xopt = [579.3167, 1359.943, 5110.071, 182.0174, 295.5985, 217.9799, 286.4162, 395.5979]
             self.fopt = 7049.3307
 
-        elif name == '1.12 G12 Problem':
-            
-            self.__doc__ = """
-            Dimension: 3
-            """
-
-            def obj(x):
-                y = -(1-0.01*((x[0]-5)**2+(x[1]-5)**2+(x[2]-5)**2))
-                return y
-
-            def cns(x):
-                z = np.empty([9, 9, 9])
-                for p in range(9):
-                    for q in range(9):
-                        for r in range(9):
-                            z[p, q, r] = (x[0]-(p+1))**2+(x[1]-(q+1))**2+(x[2]-(r+1))**2-0.0625
-                g = np.min(z)
-                return [g]
-            
-            self.obj = obj
-            self.cns = cns
-            self.lb = [1, 1, 1] # original bound = 0
-            self.ub = [10, 10, 10]
-            self.xopt = [5, 5, 5]
-            self.fopt = 1.0
-
-        elif name == '1.14 Welded Beam Design Problem':
-            
-            self.__doc__ = """
-            Dimensions: 4
-            """
-
-            def obj(x):
-                y = 1.10471*x[0]**2*x[1]+0.04811*x[2]*x[3]*(14.0+x[1]);
-                return y
-
-            def cns(x):
-                P = 6000
-                L = 14
-                E = 30e+6
-                G = 12e+6
-                t_max = 13600
-                s_max = 30000
-                d_max = 0.25
-                M = P*(L+x[1]/2)
-                R = np.sqrt(0.25*(x[1]**2+(x[0]+x[2])**2))
-                J = 2/math.sqrt(1)*x[0]*x[1]*(x[1]**2/12+0.25*(x[0]+x[2])**2)
-                P_c = (4.013*E/(6*L**2))*x[2]*x[3]**3*(1-0.25*x[2]*math.sqrt(E/G)/L)
-                t1 = P/(math.sqrt(1)*x[0]*x[1])
-                t2 = M*R/J
-                t = np.sqrt(t1**2+t1*t2*x[1]/R+t2**2)
-                s = 6*P*L/(x[3]*x[2]**2)
-                d = 4*P*L**3/(E*x[3]*x[2]**3)
-                g1 = t-t_max
-                g2 = s-s_max
-                g3 = x[0]-x[3]
-                g4 = 0.10471*x[0]**2+0.04811*x[2]*x[3]*(14.0+x[1])-5.0
-                g5 = d-d_max
-                g6 = P-P_c
-                return np.array([g1, g2, g3, g4, g5, g6]).tolist()
-            
-            self.obj = obj
-            self.cns = cns
-            self.lb = [0.125, 0.1, 0.1, 0.1]
-            self.ub = [10, 10, 10, 10]
-            self.xopt = None
-            self.fopt = None
-
-        elif name == '1.1 ALKYLATION':
+        elif name == '2.1 ALKYLATION':
             
             self.__doc__ = """
             Dimensions: 5
@@ -541,28 +433,6 @@ class Cons:
             self.xopt = [1.0, 1.0]
             self.fopt = 2.0
 
-        elif name == '2.7 HS66':
-            
-            self.__doc__ = """
-            Dimensions: 2
-            """
-
-            def obj(x):
-                f = 0.2*x[2] - 0.8*x[1]
-                return f
-
-            def cns(x):
-                g1 = math.exp(x[0]) - x[1]
-                g2 = math.exp(x[1]) - x[2]
-                return [g1, g2]
-            
-            self.obj = obj
-            self.cns = cns
-            self.lb = [0, 0, 0]
-            self.ub = [100, 100, 10]
-            self.xopt = [0.1841, 1.2022, 3.3273]
-            self.fopt = 0.5182
-
         elif name == '2.8 KS224':
             
             self.__doc__ = """
@@ -692,51 +562,6 @@ class Cons:
             self.xopt = [3.1139, 2.0627]
             self.fopt = 5.1765
         
-        elif name == '2.13 SPEEDREDUCER':
-
-            self.__doc__ = """
-            Dimensions: 7
-
-            Floudas & Pardalos Ex 11.3 p. 153
-            Weight Min of Speed Reducer
-            originally from
-            Chew, C.S., and Q. Zheng. Integral Global Optimization, vol 298 of Lecture
-            Notes in Economics and Mathematical Systems. Springer-Verlag, 1988.
-            """
-
-            def obj(x):
-                f = 0.7854*x[0]*(x[1]**2)*(3.3333*(x[2]**2)+14.9334*x[2]-43.0934) - \
-                    1.508*x[0]*((x[5]**2)+(x[6]**2)) + \
-                    7.477*((x[5]**3)+(x[6]**3)) + \
-                    0.7854*(x[3]*(x[5]**2)+x[4]*(x[6]**2))
-                return f
-
-            def cns(x):
-                A1 = math.sqrt((745*x[3]/x[1]/x[2])**2 + (16.911)**6)
-                A2 = math.sqrt((745*x[4]/x[1]/x[2])**2 + (157.51)**6)
-                B1 = 0.1*x[5]**3
-                B2 = 0.1*x[6]**3
-
-                g1 = 27.0 - x[0]*(x[1]**2)*x[2]
-                g2 = 397.5 - x[0]*(x[1]**2)*(x[2]**2)
-                g3 = 1.93 - x[1]*(x[5]**4)*x[2]/(x[3]**3)
-                g4 = 1.93 - x[1]*(x[6]**4)*x[2]/(x[4]**3)
-                g5 = A1*B1 - 1101.0
-                g6 = A2/B2 - 850.0
-                g7 = x[1]*x[2] - 40.0
-                g8 = 5.0 - x[0]/x[1]
-                g9 = x[0]/x[1] - 12.0
-                g10 = 1.5*x[5] - x[3] + 1.9
-                g11 = 1.5*x[6] - x[4] + 1.9
-                return [g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11]
-
-            self.obj = obj
-            self.cns = cns
-            self.lb = [2.6, 0.7, 17, 7.3, 7.3, 2.9, 5.0]
-            self.ub = [3.6, 0.8, 28, 8.3, 8.3, 3.9, 5.5]
-            self.xopt = [3.5, 0.7, 17, 7.3, 7.71, 3.35, 5.287]
-            self.fopt = 2994.47
-
         elif name == '':
             
             self.__doc__ = """

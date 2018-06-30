@@ -11,7 +11,6 @@ Non-constrained optimization problem collections.
 1.6 Gramacy & Lee (2012) Function
 1.7 Griewank Function
 1.8 Holder Table Function
-1.9 Langermann Function
 1.10 Levy Function
 1.11 Levy Function N. 13
 1.12 Rastrigin Function
@@ -35,7 +34,6 @@ Non-constrained optimization problem collections.
 3.1 Booth Function
 3.2 Matyas Function
 3.3 McCormick Function
-3.4 Power Sum Function
 3.5 Zakharov Function
 
 4. Valley-Shaped
@@ -58,11 +56,12 @@ Non-constrained optimization problem collections.
 6.4 Forrester et al. (2008) Function
 6.5 Goldstein-Price Function
 6.6 Hartmann 3-D Function
-6.7 Hartmann 4-D Function
 6.8 Hartmann 6-D Function
 6.9 Perm Function d, β
-6.11 Shekel Function
-6.12 Styblinski-Tang Function
+6.11 Shekel Function 5
+6.12 Shekel Function 7
+6.13 Shekel Function 10
+6.14 Styblinski-Tang Function
 
 """
 
@@ -257,8 +256,6 @@ class NonCons:
             Technometrics, 55(1), 24-28.
             """
 
-            raise TypeError('Problem solution was not ready.')
-
             def obj(x):
                 term1 = math.sin(10.0*math.pi*x) / (2.0*x)
                 term2 = (x-1.0)**4
@@ -269,8 +266,8 @@ class NonCons:
             self.cns = None
             self.lb = [0.5]
             self.ub = [2.5]
-            self.xopt = None
-            self.fopt = None
+            self.xopt = 0.54856368
+            self.fopt = -0.8690111349647177
 
         elif name == '1.7 Griewank Function':
 
@@ -331,46 +328,6 @@ class NonCons:
             self.ub = [10, 10]
             self.xopt = [[8.05502, 9.66459], [8.05502, -9.66459], [-8.05502, 9.66459], [-8.05502, -9.66459]]
             self.fopt = -19.2085
-
-        elif name == '1.9 Langermann Function':
-
-            self.__doc__ = """
-            Dimensions: d 
-
-            The Langermann function is multimodal, with many unevenly distributed local minima.
-
-            1. Adorio, E. P., & Diliman, U. P. MVF - Multivariate Test Functions Library in C for
-            Unconstrained Global Optimization (2005). Retrieved June 2013, from
-            http://http://www.geocities.ws/eadorio/mvf.pdf.
-            2. Molga, M., & Smutnicki, C. Test functions for optimization needs (2005). Retrieved
-            June 2013, from http://www.zsd.ict.pwr.wroc.pl/files/docs/functions.pdf.
-            """
-            
-            raise TypeError('Problem solution was not ready.')
-
-            def obj(x):
-                d = dimensions
-                m = 5
-                c = [1, 2, 5, 2, 3]
-                A = np.array([[3, 5], [5, 2], [2, 1], [1, 4], [7, 9]])
-                outer = 0
-                for ii in range(5):
-                    inner = 0
-                    for jj in range(d):
-                        xj = x[jj]
-                        Aij = A[ii, jj]
-                        inner = inner + (xj-Aij)**2
-                    new = c[ii] * math.exp(-inner/math.pi) * math.cos(math.pi*inner)
-                    outer = outer + new
-                f = outer
-                return f
-
-            self.obj = obj
-            self.cns = None
-            self.lb = [0, 0]
-            self.ub = [10, 10]
-            self.xopt = None
-            self.fopt = None
 
         elif name == '1.10 Levy Function':
 
@@ -890,41 +847,6 @@ class NonCons:
             self.xopt = [-0.54719, -1.54719]
             self.fopt = -1.9133
 
-        elif name == '3.4 Power Sum Function':
-            
-            self.__doc__ = """
-            Dimensions: 4 
-
-            The Power Sum function. It is shown above in its two-dimensional form.
-
-            Global Optimization Test Problems. Retrieved June 2013, from
-            http://www-optima.amp.i.kyoto-u.ac.jp/member/student/hedar/Hedar_files/TestGO.htm.
-            """
-
-            raise TypeError('Problem solution was not ready.')
-
-            def obj(x):
-                d = 4
-                b = [8, 18, 44, 114]
-                outer = 0
-
-                for ii in range(1, d+1):
-                    inner = 0;
-                    for jj in range(1, d+1):
-                        xj = x[jj-1]
-                        inner = inner + xj**ii
-                    outer = outer + (inner-b[ii-1])**2
-
-                y = outer;
-                return y
-
-            self.obj = obj
-            self.cns = None
-            self.lb = (np.ones(dimensions)*0.0).tolist()
-            self.ub = (np.ones(dimensions)*dimensions).tolist()
-            self.xopt = None
-            self.fopt = None
-
         elif name == '3.5 Zakharov Function':
             
             self.__doc__ = """
@@ -1263,8 +1185,6 @@ class NonCons:
             modelling: a practical guide. Wiley.
             """
 
-            raise TypeError('Problem solution was not ready.')
-
             def obj(x):
                 x = x[0]
                 fact1 = (6*x - 2)**2;
@@ -1276,8 +1196,8 @@ class NonCons:
             self.cns = None
             self.lb = [0]
             self.ub = [1]
-            self.xopt = None
-            self.fopt = None
+            self.xopt = [0.75724768]
+            self.fopt = -6.0207400551464705
 
         elif name == '6.5 Goldstein-Price Function':
 
@@ -1356,57 +1276,6 @@ class NonCons:
             self.xopt = [0.114614, 0.555649, 0.852547]
             self.fopt = -3.86278
 
-        elif name == '6.7 Hartmann 4-D Function':
-            
-            self.__doc__ = """
-            Dimensions: 4 
-
-            The 4-dimensional Hartmann function is multimodal. It is given here in the form of
-            Picheny et al. (2012), having a mean of zero and a variance of one. The authors also
-            add a small Gaussian error term to the output. 
-
-            1. Dixon, L. C. W., & Szego, G. P. (1978). The global optimization problem: an
-            introduction. Towards global optimization, 2, 1-15.
-            2. Picheny, V., Wagner, T., & Ginsbourger, D. (2012). A benchmark of kriging-based
-            infill criteria for noisy optimization.
-            """
-            
-            raise TypeError('Problem solution was not ready.')
-
-            def obj(x):
-                alpha = np.array([1.0, 1.2, 3.0, 3.2])
-                A = np.array([
-                    [10, 3, 17, 3.5, 1.7, 8],
-                    [0.05, 10, 17, 0.1, 8, 14],
-                    [3, 3.5, 1.7, 10, 17, 8],
-                    [17, 8, 0.05, 10, 0.1, 14]])
-                P = 10^(-4) * np.array([
-                    [1312, 1696, 5569, 124, 8283, 5886],
-                    [2329, 4135, 8307, 3736, 1004, 9991],
-                    [2348, 1451, 3522, 2883, 3047, 6650],
-                    [4047, 8828, 8732, 5743, 1091, 381]])
-
-                outer = 0
-                for ii in range(1, 5):
-                    inner = 0
-                    for jj in range(1, 5):
-                        xj = x[jj-1]
-                        Aij = A[ii-1, jj-1]
-                        Pij = P[ii-1, jj-1]
-                        inner = inner + Aij*(xj-Pij)**2
-                    new = alpha[ii-1] * math.exp(-inner)
-                    outer = outer + new
-
-                y = (1.1 - outer) / 0.839
-                return y
-
-            self.obj = obj
-            self.cns = None
-            self.lb = np.zeros(4)
-            self.ub = np.ones(4)
-            self.xopt = None
-            self.fopt = None
-
         elif name == '6.8 Hartmann 6-D Function':
             
             self.__doc__ = """
@@ -1421,29 +1290,31 @@ class NonCons:
             """
 
             def obj(x):
-                alpha = np.array([1.0, 1.2, 3.0, 3.2])
-                A = np.array([
-                    [10, 3, 17, 3.5, 1.7, 8],
-                    [0.05, 10, 17, 0.1, 8, 14],
-                    [3, 3.5, 1.7, 10, 17, 8],
-                    [17, 8, 0.05, 10, 0.1, 14]])
-                P = 10^(-4) * np.array([
-                    [1312, 1696, 5569, 124, 8283, 5886],
-                    [2329, 4135, 8307, 3736, 1004, 9991],
-                    [2348, 1451, 3522, 2883, 3047, 6650],
-                    [4047, 8828, 8732, 5743, 1091, 381]])
-                outer = 0
 
-                for ii in range(1, 5):
-                    inner = 0
-                    for jj in range(1, 7):
-                        xj = x[jj-1]
-                        Aij = A[ii-1, jj-1]
-                        Pij = P[ii-1, jj-1]
-                        inner = inner + Aij*((xj-Pij)**2)
-                    outer = outer + alpha[ii-1] * math.exp(-inner)
+                a = np.empty([4, 6])
+                a[0,0]=10.0;	a[0,1]=3.0;		a[0,2]=17.0;	a[0,3]=3.5;		a[0,4]=1.7;		a[0,5]=8.0
+                a[1,0]=0.05;	a[1,1]=10.0;	a[1,2]=17.0;	a[1,3]=0.1;		a[1,4]=8.0;		a[1,5]=14.0
+                a[2,0]=3.0;		a[2,1]=3.5;		a[2,2]=1.7;		a[2,3]=10.0;	a[2,4]=17.0;	a[2,5]=8.0
+                a[3,0]=17.0;	a[3,1]=8.0;		a[3,2]=0.05;	a[3,3]=10.0;	a[3,4]=0.1;		a[3,5]=14.0
 
-                y = -(2.58 + outer) / 1.94
+                c = np.empty([4])
+                c[0]=1.0;   c[1]=1.2;   c[2]=3.0;   c[3]=3.2
+
+                p = np.empty([4, 6])
+                p[0,0]=0.1312;	p[0,1]=0.1696;	p[0,2]=0.5569;	p[0,3]=0.0124;	p[0,4]=0.8283;	p[0,5]=0.5886
+                p[1,0]=0.2329;	p[1,1]=0.4135;	p[1,2]=0.8307;	p[1,3]=0.3736;	p[1,4]=0.1004;	p[1,5]=0.9991
+                p[2,0]=0.2348;	p[2,1]=0.1451;	p[2,2]=0.3522;	p[2,3]=0.2883;	p[2,4]=0.3047;	p[2,5]=0.6650
+                p[3,0]=0.4047;	p[3,1]=0.8828;	p[3,2]=0.8732;	p[3,3]=0.5743;	p[3,4]=0.1091;	p[3,5]=0.0381
+
+                s = 0
+
+                for i in range(1, 5):
+                    sm = 0
+                    for j in range(1, 7):
+                        sm = sm+a[i-1,j-1]*(x[j-1]-p[i-1,j-1])**2
+                    s = s+c[i-1]*math.exp(-sm)
+
+                y = -s
                 return y
 
             self.obj = obj
@@ -1486,7 +1357,7 @@ class NonCons:
             self.xopt = [1, 2] # [3, 4, ...]
             self.fopt = 0.0
 
-        elif name == '6.11 Shekel Function':
+        elif name == '6.11 Shekel Function 5':
             
             self.__doc__ = """
             Dimensions: 4 
@@ -1497,16 +1368,100 @@ class NonCons:
             """
 
             def obj(x):
-                m = 10.0
+                m = 5
                 b = 0.1 * np.array([1, 2, 2, 4, 4, 6, 3, 7, 5, 5])
                 C = np.array([
                     [4.0, 1.0, 8.0, 6.0, 3.0, 2.0, 5.0, 8.0, 6.0, 7.0],
-                    [4.0, 1.0, 8.0, 6.0, 7.0, 9.0, 3.0, 1.0, 2.0, 3.6],
-                    [4.0, 1.0, 8.0, 6.0, 3.0, 2.0, 5.0, 8.0, 6.0, 7.0],
+                    [4.0, 1.0, 8.0, 6.0, 7.0, 9.0, 5.0, 1.0, 2.0, 3.6],
+                    [4.0, 1.0, 8.0, 6.0, 3.0, 2.0, 3.0, 8.0, 6.0, 7.0],
                     [4.0, 1.0, 8.0, 6.0, 7.0, 9.0, 3.0, 1.0, 2.0, 3.6]])
                 outer = 0
 
-                for ii in range(1, 11):
+                for ii in range(1, m+1):
+                    bi = b[ii-1]
+                    inner = 0
+                    for jj in range(1, 5):
+                        xj = x[jj-1]
+                        Cji = C[jj-1, ii-1]
+                        inner = inner + (xj-Cji)**2
+                    outer = outer + 1/(inner+bi)
+
+                y = -outer
+                return y
+
+            self.obj = obj
+            self.cns = None
+            self.lb = [0, 0, 0, 0]
+            self.ub = [10, 10, 10, 10]
+            self.xopt = [4, 4, 4, 4]
+            self.fopt = -10.1532
+
+        elif name == '6.12 Shekel Function 7':
+            
+            self.__doc__ = """
+            Dimensions: 4 
+
+            The Shekel function has m local minima. Above are the recommended values of m, 
+            the β-vector and the C-matrix; β is an m-dimensional vector, and C is a 4
+            -by-m-dimensional matrix
+
+            1. Global Optimization Test Problems. Retrieved June 2013, from
+            http://www-optima.amp.i.kyoto-u.ac.jp/member/student/hedar/Hedar_files/TestGO.htm.
+
+            2. Molga, M., & Smutnicki, C. Test functions for optimization needs (2005). Retrieved
+            June 2013, from http://www.zsd.ict.pwr.wroc.pl/files/docs/functions.pdf.
+            """
+
+            def obj(x):
+                m = 7
+                b = 0.1 * np.array([1, 2, 2, 4, 4, 6, 3, 7, 5, 5])
+                C = np.array([
+                    [4.0, 1.0, 8.0, 6.0, 3.0, 2.0, 5.0, 8.0, 6.0, 7.0],
+                    [4.0, 1.0, 8.0, 6.0, 7.0, 9.0, 5.0, 1.0, 2.0, 3.6],
+                    [4.0, 1.0, 8.0, 6.0, 3.0, 2.0, 3.0, 8.0, 6.0, 7.0],
+                    [4.0, 1.0, 8.0, 6.0, 7.0, 9.0, 3.0, 1.0, 2.0, 3.6]])
+                outer = 0
+
+                for ii in range(1, m+1):
+                    bi = b[ii-1]
+                    inner = 0
+                    for jj in range(1, 5):
+                        xj = x[jj-1]
+                        Cji = C[jj-1, ii-1]
+                        inner = inner + (xj-Cji)**2
+                    outer = outer + 1/(inner+bi)
+
+                y = -outer
+                return y
+
+            self.obj = obj
+            self.cns = None
+            self.lb = [0, 0, 0, 0]
+            self.ub = [10, 10, 10, 10]
+            self.xopt = [4, 4, 4, 4]
+            self.fopt = -10.4029
+
+        elif name == '6.13 Shekel Function 10':
+            
+            self.__doc__ = """
+            Dimensions: 4 
+
+            The Shekel function has m local minima. Above are the recommended values of m, 
+            the β-vector and the C-matrix; β is an m-dimensional vector, and C is a 4
+            -by-m-dimensional matrix
+            """
+
+            def obj(x):
+                m = 10
+                b = 0.1 * np.array([1, 2, 2, 4, 4, 6, 3, 7, 5, 5])
+                C = np.array([
+                    [4.0, 1.0, 8.0, 6.0, 3.0, 2.0, 5.0, 8.0, 6.0, 7.0],
+                    [4.0, 1.0, 8.0, 6.0, 7.0, 9.0, 5.0, 1.0, 2.0, 3.6],
+                    [4.0, 1.0, 8.0, 6.0, 3.0, 2.0, 3.0, 8.0, 6.0, 7.0],
+                    [4.0, 1.0, 8.0, 6.0, 7.0, 9.0, 3.0, 1.0, 2.0, 3.6]])
+                outer = 0
+
+                for ii in range(1, m+1):
                     bi = b[ii-1]
                     inner = 0
                     for jj in range(1, 5):
@@ -1525,7 +1480,7 @@ class NonCons:
             self.xopt = [4, 4, 4, 4]
             self.fopt = -10.5364
 
-        elif name == '6.12 Styblinski-Tang Function':
+        elif name == '6.14 Styblinski-Tang Function':
             
             self.__doc__ = """
             Dimensions: d 
