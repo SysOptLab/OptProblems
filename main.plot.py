@@ -6,6 +6,6 @@ import OptProblems
 
 # -- problem
 
-name = '6.2 Branin Function'
+name = '6.5 Goldstein-Price Function'
 problem = OptProblems.NonCons(name)
 problem.plot()

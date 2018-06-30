@@ -1177,9 +1177,9 @@ class NonCons:
             """
 
             def obj(x):
-                x = x[0]
+                x = np.array(x)
                 fact1 = (6*x - 2)**2;
-                fact2 = math.sin(12*x - 4);
+                fact2 = np.sin(12*x - 4);
                 y = fact1 * fact2
                 return y
 

@@ -69,11 +69,11 @@ def plot(problem):
             for i in range(dim):
                 plt.contour(x1_plot, x2_plot, g_plot[:,:,i], colors="k", levels=0, linestyles='dotted', lw=0.1)
 
-        if not isinstance(xopt[0], float):
+        if isinstance(xopt[0], list):
             for xopt_i in xopt:
                 plt.plot(xopt_i[0], xopt_i[1], '*r')
         else:
-            plt.plot(xopi[0], xopt[1], '*r')
+            plt.plot(xopt[0], xopt[1], '*r')
 
         plt.axis( [ lb[0], ub[0], lb[1], ub[1] ] )
         plt.axis('equal')
@@ -84,7 +84,13 @@ def plot(problem):
 
         fig = plt.figure()
         ax = fig.gca(projection='3d')
-        surf = ax.plot_surface(x1_plot, x2_plot, f_plot, cmap=cm.jet, linewidth=0, antialiased=False)
+        surf = ax.plot_surface(x1_plot, x2_plot, f_plot, cmap=cm.jet, linewidth=0, antialiased=False, alpha=0.4)
+        if isinstance(xopt[0], list):
+            for xopt_i in xopt:
+                ax.scatter(xopt_i[0], xopt_i[1], obj(xopt_i), color="r", marker='*', s=50)
+        else:
+            ax.scatter(xopt[0], xopt[1], obj(xopt), color="r", marker='*', s=50)
+        
         ax.set_xlabel('$x_1$')
         ax.set_ylabel('$x_2$')
         ax.set_zlabel('$f$')
