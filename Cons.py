@@ -31,6 +31,11 @@ Constrained Optimization Problem Collections:
 import math
 import numpy as np
 
+if __package__:
+    from . import debug_plot
+else:
+    import debug_plot
+
 class Cons:
 
     """Constrained optimization problem.
@@ -560,7 +565,7 @@ class Cons:
             self.lb = [0, 0]
             self.ub = [10, 10]
             self.xopt = [3.1139, 2.0627]
-            self.fopt = 5.1765
+            self.fopt = 5.1766
         
         elif name == '':
             
@@ -582,6 +587,9 @@ class Cons:
 
         else:
             raise "Unkown problem name."
+
+    def plot(self):
+        debug_plot.plot(self)
 
     def __str__(self):
         return self.__doc__
