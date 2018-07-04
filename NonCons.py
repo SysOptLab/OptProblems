@@ -8,7 +8,7 @@ Non-constrained optimization problem collections.
 1.3 Cross-in-Tray Function
 1.4 Drop-Wave Function
 1.5 Eggholder Function
-1.6 Gramacy & Lee (2012) Function
+1.6 Gramacy and Lee (2012) Function
 1.7 Griewank Function
 1.8 Holder Table Function
 1.10 Levy Function
@@ -243,7 +243,7 @@ class NonCons:
             self.xopt = [512, 404.2319]
             self.fopt = -959.6407
 
-        elif name == '1.6 Gramacy & Lee (2012) Function':
+        elif name == '1.6 Gramacy and Lee (2012) Function':
 
             self.__doc__ = """
             Dimensions: 1
