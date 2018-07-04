@@ -1181,7 +1181,7 @@ class NonCons:
                 fact1 = (6*x - 2)**2;
                 fact2 = np.sin(12*x - 4);
                 y = fact1 * fact2
-                return y
+                return y[0]
 
             self.obj = obj
             self.cns = None
