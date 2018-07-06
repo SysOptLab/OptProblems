@@ -21,8 +21,8 @@ Non-constrained optimization problem collections.
 
 2. Bowl-Shaped
 
-2.1 Bohachevsky Functions
-2.2 Perm Function 0, d, β
+2.1 Bohachevsky Function
+2.2 Perm Function
 2.3 Rotated Hyper-Ellipsoid Function
 2.4 Sphere Function Modified
 2.5 Sum of Different Powers Function
@@ -57,7 +57,7 @@ Non-constrained optimization problem collections.
 6.5 Goldstein-Price Function
 6.6 Hartmann 3-D Function
 6.8 Hartmann 6-D Function
-6.9 Perm Function d, β
+6.9 Perm Function
 6.11 Shekel Function 5
 6.12 Shekel Function 7
 6.13 Shekel Function 10
@@ -540,7 +540,7 @@ class NonCons:
             self.xopt = [-1.425128, -0.800273]
             self.fopt = -186.7309
 
-        elif name == '2.1 Bohachevsky Functions':
+        elif name == '2.1 Bohachevsky Function':
             
             self.__doc__ = """
             Dimensions: 2 
@@ -571,7 +571,7 @@ class NonCons:
             self.xopt = [0.0, 0.0]
             self.fopt = 0.0
 
-        elif name == '2.2 Perm Function 0, d, β':
+        elif name == '2.2 Perm Function':
             
             self.__doc__ = """
             Dimensions: d
@@ -1315,7 +1315,7 @@ class NonCons:
             self.xopt = [0.20169, 0.150011, 0.476874, 0.275332, 0.311652, 0.6573]
             self.fopt = -3.32237
 
-        elif name == '6.9 Perm Function d, β':
+        elif name == '6.9 Perm Function':
             
             self.__doc__ = """
             Dimensions: d 
