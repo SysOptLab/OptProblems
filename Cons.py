@@ -57,6 +57,8 @@ class Cons:
         if name == '1.2 G2 Problem':
             
             self.__doc__ = """
+            1.2 G2 Problem
+
             Dimensions: 20
             """
             
@@ -88,6 +90,8 @@ class Cons:
         elif name == '1.3 G3 Problem':
             
             self.__doc__ = """
+            1.3 G3 Problem
+
             Dimensions: d
             """
 
@@ -111,6 +115,8 @@ class Cons:
         elif name == '1.4 G4 Problem':
             
             self.__doc__ = """
+            1.4 G4 Problem
+
             Dimensions: 5
             """
 
@@ -140,6 +146,8 @@ class Cons:
         elif name == '1.6 G6 Problem':
             
             self.__doc__ = """
+            1.6 G6 Problem
+
             Dimensions: 2
             """
 
@@ -162,6 +170,8 @@ class Cons:
         elif name == '1.7 G7 Problem':
             
             self.__doc__ = """
+            1.7 G7 Problem
+
             Dimensions: 10
             """
 
@@ -192,6 +202,8 @@ class Cons:
         elif name == '1.8 G8 Problem':
             
             self.__doc__ = """
+            1.8 G8 Problem
+
             Dimensions: 2
             """
 
@@ -214,6 +226,8 @@ class Cons:
         elif name == '1.9 G9 Problem':
             
             self.__doc__ = """
+            1.9 G9 Problem
+
             Dimensions: 7
             """
 
@@ -241,6 +255,8 @@ class Cons:
         elif name == '1.10 G10 Problem':
             
             self.__doc__ = """
+            1.10 G10 Problem
+
             Dimensions: 8
             """
 
@@ -267,6 +283,8 @@ class Cons:
         elif name == '2.1 ALKYLATION':
             
             self.__doc__ = """
+            2.1 ALKYLATION
+
             Dimensions: 5
             """
 
@@ -318,6 +336,8 @@ class Cons:
         elif name == '2.2 CAMEL':
 
             self.__doc__ = """
+            2.2 CAMEL
+
             Dimensions: 2
 
             Three Hump Camel-back w/ added constraint
@@ -344,6 +364,8 @@ class Cons:
         elif name == '2.3 FUNC2D':
 
             self.__doc__ = """
+            2.3 FUNC2D
+
             Dimensions: 2
             """
 
@@ -365,6 +387,8 @@ class Cons:
         elif name == '2.4 GOLDPR':
 
             self.__doc__ = """
+            2.4 GOLDPR
+
             Dimensions: 2
 
             Goldstein Price
@@ -395,6 +419,8 @@ class Cons:
         elif name == '2.5 GOMEZ':
             
             self.__doc__ = """
+            2.5 GOMEZ
+
             Dimensions: 2
             """
 
@@ -416,6 +442,8 @@ class Cons:
         elif name == '2.6 HS23':
             
             self.__doc__ = """
+            2.6 HS23
+
             Dimensions: 2
             """
 
@@ -441,6 +469,8 @@ class Cons:
         elif name == '2.8 KS224':
             
             self.__doc__ = """
+            2.8 KS224
+
             Dimensions: 2
 
             Klaus Schittkowski Problem Collection 224
@@ -467,6 +497,8 @@ class Cons:
         elif name == '2.9 KS250':
             
             self.__doc__ = """
+            2.9 KS250
+
             Dimensions: 3
 
             Klaus Schittkowski Problem Collection p.74
@@ -491,6 +523,8 @@ class Cons:
         elif name == '2.10 KS346':
 
             self.__doc__ = """
+            2.10 KS346
+
             Dimensions: 3
 
             Klaus Schittkowski Problem Collection p.167
@@ -515,6 +549,8 @@ class Cons:
         elif name == '2.11 NEWBRANIN':
 
             self.__doc__ = """
+            2.11 NEWBRANIN
+
             Dimensions: 2
 
             Branin test function
@@ -547,6 +583,8 @@ class Cons:
         elif name == '2.12 PRES':
 
             self.__doc__ = """
+            2.12 PRES
+            
             Dimensions: 2
             """
 

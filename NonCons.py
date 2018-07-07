@@ -94,6 +94,8 @@ class NonCons:
         if name == '1.1 Ackley Function':
 
             self.__doc__ = """
+            1.1 Ackley Function
+
             Dimensions: d
 
             The Ackley function is widely used for testing optimization algorithms.
@@ -137,6 +139,8 @@ class NonCons:
         elif name == '1.2 Bukin Function N. 6':
 
             self.__doc__ = """
+            1.2 Bukin Function N. 6
+
             Dimensions: 2
 
             The sixth Bukin function has many local minima, all of which lie in a ridge.
@@ -163,6 +167,8 @@ class NonCons:
         elif name == '1.3 Cross-in-Tray Function':
 
             self.__doc__ = """
+            1.3 Cross-in-Tray Function
+
             Dimensions: 2
 
             The Cross-in-Tray function has multiple global minima. It is shown here
@@ -191,6 +197,8 @@ class NonCons:
         elif name == '1.4 Drop-Wave Function':
 
             self.__doc__ = """
+            1.4 Drop-Wave Function
+
             Dimensions: 2
 
             The Drop-Wave function is multimodal and highly complex. The second
@@ -219,6 +227,8 @@ class NonCons:
         elif name == '1.5 Eggholder Function':
 
             self.__doc__ = """
+            1.5 Eggholder Function
+
             Dimensions: 2
 
             The Eggholder function is a difficult function to optimize,
@@ -246,6 +256,8 @@ class NonCons:
         elif name == '1.6 Gramacy and Lee (2012) Function':
 
             self.__doc__ = """
+            1.6 Gramacy and Lee (2012) Function
+            
             Dimensions: 1
 
             This is a simple one-dimensional test function. 
@@ -273,6 +285,8 @@ class NonCons:
         elif name == '1.7 Griewank Function':
 
             self.__doc__ = """
+            1.7 Griewank Function
+            
             Dimensions: d
 
             The Griewank function has many widespread local minima, which are regularly
@@ -305,6 +319,8 @@ class NonCons:
         elif name == '1.8 Holder Table Function':
 
             self.__doc__ = """
+            1.8 Holder Table Function
+            
             Dimensions: 2
 
             The Holder Table function has many local minima, with four global minima. 
@@ -333,6 +349,8 @@ class NonCons:
         elif name == '1.10 Levy Function':
 
             self.__doc__ = """
+            1.10 Levy Function
+            
             Dimensions: d
 
             The function is usually evaluated on the hypercube.
@@ -369,6 +387,8 @@ class NonCons:
         elif name == '1.11 Levy Function N. 13':
 
             self.__doc__ = """
+            1.11 Levy Function N. 13
+
             Dimensions: 2 
 
             The function is usually evaluated on the square.
@@ -396,6 +416,8 @@ class NonCons:
         elif name == '1.12 Rastrigin Function':
 
             self.__doc__ = """
+            1.12 Rastrigin Function
+
             Dimensions: d
 
             The Rastrigin function has several local minima. It is highly multimodal,
@@ -426,6 +448,8 @@ class NonCons:
         elif name == '1.13 Schaffer Function N. 2':
 
             self.__doc__ = """
+            1.13 Schaffer Function N. 2
+
             Dimensions: 2
 
             The second Schaffer function.
@@ -452,6 +476,8 @@ class NonCons:
         elif name == '1.14 Schaffer Function N. 4':
 
             self.__doc__ = """
+            1.14 Schaffer Function N. 4
+
             Dimensions: 2
 
             The fourth Schaffer function.
@@ -478,6 +504,8 @@ class NonCons:
         elif name == '1.15 Schwefel Function':
 
             self.__doc__ = """
+            1.15 Schwefel Function
+            
             Dimensions: d
 
             The Schwefel function is complex, with many local minima.
@@ -512,6 +540,8 @@ class NonCons:
         elif name == '1.16 Shubert Function':
             
             self.__doc__ = """
+            1.16 Shubert Function
+            
             Dimensions: 2
 
             The Shubert function has several local minima and many global minima.
@@ -543,6 +573,8 @@ class NonCons:
         elif name == '2.1 Bohachevsky Function':
             
             self.__doc__ = """
+            2.1 Bohachevsky Function
+            
             Dimensions: 2 
 
             The Bohachevsky functions all have the same similar bowl shape. The one shown above is
@@ -574,6 +606,8 @@ class NonCons:
         elif name == '2.2 Perm Function':
             
             self.__doc__ = """
+            2.2 Perm Function
+            
             Dimensions: d
 
             The function is usually evaluated on the hypercube xi ∈ [-d, d], for all i = 1, …, d. 
@@ -607,6 +641,8 @@ class NonCons:
         elif name == '2.3 Rotated Hyper-Ellipsoid Function':
             
             self.__doc__ = """
+            2.3 Rotated Hyper-Ellipsoid Function
+            
             Dimensions: d 
 
             The Rotated Hyper-Ellipsoid function is continuous, convex and unimodal. It is an
@@ -641,6 +677,8 @@ class NonCons:
         elif name == '2.4 Sphere Function Modified':
             
             self.__doc__ = """
+            2.4 Sphere Function Modified
+            
             Dimensions: 6
 
             The Sphere function has d local minima except for the global one. It is continuous,
@@ -673,6 +711,8 @@ class NonCons:
         elif name == '2.5 Sum of Different Powers Function':
             
             self.__doc__ = """
+            2.5 Sum of Different Powers Function
+            
             Dimensions: d 
 
             The Sum of Different Powers function is unimodal. It is shown here in its
@@ -704,6 +744,8 @@ class NonCons:
         elif name == '2.6 Sum Squares Function':
             
             self.__doc__ = """
+            2.6 Sum Squares Function
+            
             Dimensions: d 
 
             The Sum Squares function, also referred to as the Axis Parallel Hyper-Ellipsoid
@@ -736,6 +778,8 @@ class NonCons:
         elif name == '2.7 Trid Function':
             
             self.__doc__ = """
+            2.7 Trid Function
+            
             Dimensions: d 
 
             The Trid function has no local minimum except the global one. It is shown here in its
@@ -772,6 +816,8 @@ class NonCons:
         elif name == '3.1 Booth Function':
             
             self.__doc__ = """
+            3.1 Booth Function
+            
             Dimensions: 2 
 
             Global Optimization Test Problems. Retrieved June 2013, from
@@ -798,6 +844,8 @@ class NonCons:
         elif name == '3.2 Matyas Function':
             
             self.__doc__ = """
+            3.2 Matyas Function
+            
             Dimensions: 2 
 
             The Matyas function has no local minima except the global one.
@@ -824,6 +872,8 @@ class NonCons:
         elif name == '3.3 McCormick Function':
             
             self.__doc__ = """
+            3.3 McCormick Function
+            
             Dimensions: 2 
 
             Adorio, E. P., & Diliman, U. P. MVF - Multivariate Test Functions Library in C for
@@ -851,6 +901,8 @@ class NonCons:
         elif name == '3.5 Zakharov Function':
             
             self.__doc__ = """
+            3.5 Zakharov Function
+            
             Dimensions: d 
 
             The Zakharov function has no local minima except the global one. It is shown here
@@ -883,6 +935,8 @@ class NonCons:
         elif name == '4.1 Three-Hump Camel Function':
             
             self.__doc__ = """
+            4.1 Three-Hump Camel Function
+            
             Dimensions: 2 
 
             The plot on the left shows the three-hump Camel function on its recommended input
@@ -915,6 +969,8 @@ class NonCons:
         elif name == '4.2 Six-Hump Camel Function':
 
             self.__doc__ = """
+            4.2 Six-Hump Camel Function
+            
             Dimensions: 2 
 
             The plot on the left shows the six-hump Camel function on its recommended input domain,
@@ -940,6 +996,8 @@ class NonCons:
         elif name == '4.3 Dixon-Price Function':
             
             self.__doc__ = """
+            4.3 Dixon-Price Function
+            
             Dimensions: d 
 
             Global Optimization Test Functions Index. Retrieved June 2013, from
@@ -971,6 +1029,8 @@ class NonCons:
         elif name == '4.4 Rosenbrock Function':
             
             self.__doc__ = """
+            4.4 Rosenbrock Function
+            
             Dimensions: d 
 
             The Rosenbrock function, also referred to as the Valley or Banana function, is a
@@ -1014,6 +1074,8 @@ class NonCons:
         elif name == '5.2 Easom Function':
             
             self.__doc__ = """
+            5.2 Easom Function
+            
             Dimensions: 2 
 
             The Easom function has several local minima. It is unimodal, and the global minimum has
@@ -1041,6 +1103,8 @@ class NonCons:
         elif name == '5.3 Michalewicz Function':
             
             self.__doc__ = """
+            5.3 Michalewicz Function
+            
             Dimensions: d 
 
             The Michalewicz function has d! local minima, and it is multimodal. The parameter m defines
@@ -1078,6 +1142,8 @@ class NonCons:
         elif name == '6.1 Beale Function':
             
             self.__doc__ = """
+            6.1 Beale Function
+            
             Dimensions: 2 
 
             The Beale function is multimodal, with sharp peaks at the corners of the input domain. 
@@ -1105,6 +1171,8 @@ class NonCons:
         elif name == '6.2 Branin Function':
             
             self.__doc__ = """
+            6.2 Branin Function
+
             Dimensions: 2 
 
             The Branin, or Branin-Hoo, function has three global minima. The recommended values
@@ -1137,6 +1205,8 @@ class NonCons:
         elif name == '6.3 Colville Function':
             
             self.__doc__ = """
+            6.3 Colville Function
+
             Dimensions: 4
 
             Global Optimization Test Problems. Retrieved June 2013, from
@@ -1167,6 +1237,8 @@ class NonCons:
         elif name == '6.4 Forrester et al. (2008) Function':
             
             self.__doc__ = """
+            6.4 Forrester et al. (2008) Function
+
             Dimensions: 1 
 
             This function is a simple one-dimensional test function. It is multimodal, with one global
@@ -1193,6 +1265,8 @@ class NonCons:
         elif name == '6.5 Goldstein-Price Function':
 
             self.__doc__ = """
+            6.5 Goldstein-Price Function
+
             Dimensions: 2 
 
             The Goldstein-Price function has several local minima. 
@@ -1227,6 +1301,8 @@ class NonCons:
         elif name == '6.6 Hartmann 3-D Function':
 
             self.__doc__ = """
+            6.6 Hartmann 3-D Function
+
             Dimensions: 3 
 
             The 3-dimensional Hartmann function has 4 local minima. 
@@ -1270,6 +1346,8 @@ class NonCons:
         elif name == '6.8 Hartmann 6-D Function':
             
             self.__doc__ = """
+            6.8 Hartmann 6-D Function
+
             Dimensions: 6 
 
             The 6-dimensional Hartmann function has 6 local minima. 
@@ -1318,6 +1396,8 @@ class NonCons:
         elif name == '6.9 Perm Function':
             
             self.__doc__ = """
+            6.9 Perm Function
+
             Dimensions: d 
 
             The Perm d, β function.
@@ -1351,6 +1431,8 @@ class NonCons:
         elif name == '6.11 Shekel Function 5':
             
             self.__doc__ = """
+            6.11 Shekel Function 5
+
             Dimensions: 4 
 
             The Shekel function has m local minima. Above are the recommended values of m, 
@@ -1390,6 +1472,8 @@ class NonCons:
         elif name == '6.12 Shekel Function 7':
             
             self.__doc__ = """
+            6.12 Shekel Function 7
+
             Dimensions: 4 
 
             The Shekel function has m local minima. Above are the recommended values of m, 
@@ -1435,6 +1519,8 @@ class NonCons:
         elif name == '6.13 Shekel Function 10':
             
             self.__doc__ = """
+            6.13 Shekel Function 10
+
             Dimensions: 4 
 
             The Shekel function has m local minima. Above are the recommended values of m, 
@@ -1474,6 +1560,8 @@ class NonCons:
         elif name == '6.14 Styblinski-Tang Function':
             
             self.__doc__ = """
+            6.14 Styblinski-Tang Function
+
             Dimensions: d 
 
             The Styblinski-Tang function is shown here in its two-dimensional form. 
