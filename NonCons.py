@@ -1593,7 +1593,10 @@ class NonCons:
         debug_plot.plot(self)
 
     def __str__(self):
-        return self.__doc__
+        string = ''
+        for line in self.__doc__.split('\n'):
+            string += line.lstrip() + '\n'
+        return string
 
 # --
 
