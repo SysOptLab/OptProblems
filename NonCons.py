@@ -56,6 +56,7 @@ Non-constrained optimization problem collections.
 6.4 Forrester et al. (2008) Function
 6.5 Goldstein-Price Function
 6.6 Hartmann 3-D Function
+6.7 Hartmann 4-D Function
 6.8 Hartmann 6-D Function
 6.9 Perm Function
 6.11 Shekel Function 5
@@ -1200,7 +1201,7 @@ class NonCons:
             self.lb = [-5, 0]
             self.ub = [10, 15]
             self.xopt = [[-math.pi, 12.275], [math.pi, 2.275], [9.42478, 2.475]]
-            self.fopt = 0.397887
+            self.fopt = 0.3979
 
         elif name == '6.3 Colville Function':
             
@@ -1341,7 +1342,61 @@ class NonCons:
             self.lb = [0, 0, 0]
             self.ub = [1, 1, 1]
             self.xopt = [0.114614, 0.555649, 0.852547]
-            self.fopt = -3.86278
+            self.fopt = -3.8628
+
+        elif name == '6.7 Hartmann 4-D Function':
+            
+            self.__doc__ = """
+            6.7 Hartmann 4-D Function
+
+            Dimensions: 4
+
+            The 4-dimensional Hartmann function is multimodal. It is given here in the form of
+            Picheny et al. (2012), having a mean of zero and a variance of one. The authors also
+            add a small Gaussian error term to the output. 
+
+            1. Dixon, L. C. W., & Szego, G. P. (1978). The global optimization problem: an
+            introduction. Towards global optimization, 2, 1-15.
+            2. Global Optimization Test Problems. Retrieved June 2013, from
+            http://www-optima.amp.i.kyoto-u.ac.jp/member/student/hedar/Hedar_files/TestGO.htm.
+            3. Picheny, V., Wagner, T., & Ginsbourger, D. (2012). A benchmark of kriging-based
+            infill criteria for noisy optimization.
+            """
+
+            def obj(x):
+
+                a = np.empty([4, 6])
+                a[0,0]=10.0;	a[0,1]=3.0;		a[0,2]=17.0;	a[0,3]=3.5;		a[0,4]=1.7;		a[0,5]=8.0
+                a[1,0]=0.05;	a[1,1]=10.0;	a[1,2]=17.0;	a[1,3]=0.1;		a[1,4]=8.0;		a[1,5]=14.0
+                a[2,0]=3.0;		a[2,1]=3.5;		a[2,2]=1.7;		a[2,3]=10.0;	a[2,4]=17.0;	a[2,5]=8.0
+                a[3,0]=17.0;	a[3,1]=8.0;		a[3,2]=0.05;	a[3,3]=10.0;	a[3,4]=0.1;		a[3,5]=14.0
+
+                c = np.empty([4])
+                c[0]=1.0;   c[1]=1.2;   c[2]=3.0;   c[3]=3.2
+
+                p = np.empty([4, 6])
+                p[0,0]=0.1312;	p[0,1]=0.1696;	p[0,2]=0.5569;	p[0,3]=0.0124;	p[0,4]=0.8283;	p[0,5]=0.5886
+                p[1,0]=0.2329;	p[1,1]=0.4135;	p[1,2]=0.8307;	p[1,3]=0.3736;	p[1,4]=0.1004;	p[1,5]=0.9991
+                p[2,0]=0.2348;	p[2,1]=0.1451;	p[2,2]=0.3522;	p[2,3]=0.2883;	p[2,4]=0.3047;	p[2,5]=0.6650
+                p[3,0]=0.4047;	p[3,1]=0.8828;	p[3,2]=0.8732;	p[3,3]=0.5743;	p[3,4]=0.1091;	p[3,5]=0.0381
+
+                s = 0
+
+                for i in range(1, 5):
+                    sm = 0
+                    for j in range(1, 5):
+                        sm = sm+a[i-1,j-1]*(x[j-1]-p[i-1,j-1])**2
+                    s = s+c[i-1]*math.exp(-sm)
+                s = 1.0/0.839 * (1.1 - s)
+                y = s
+                return y
+
+            self.obj = obj
+            self.cns = None
+            self.lb = np.zeros(4).tolist()
+            self.ub = np.ones(4).tolist()
+            self.xopt = None
+            self.fopt = -3.1335
 
         elif name == '6.8 Hartmann 6-D Function':
             
@@ -1352,10 +1407,12 @@ class NonCons:
 
             The 6-dimensional Hartmann function has 6 local minima. 
 
-            1. Dixon, L. C. W., & Szego, G. P. (1978). The global optimization problem: an introduction. Towards global optimization, 2, 1-15.
+            1. Dixon, L. C. W., & Szego, G. P. (1978). The global optimization problem: an
+            introduction. Towards global optimization, 2, 1-15.
             2. Global Optimization Test Problems. Retrieved June 2013, from
             http://www-optima.amp.i.kyoto-u.ac.jp/member/student/hedar/Hedar_files/TestGO.htm.
-            3. Picheny, V., Wagner, T., & Ginsbourger, D. (2012). A benchmark of kriging-based infill criteria for noisy optimization.
+            3. Picheny, V., Wagner, T., & Ginsbourger, D. (2012). A benchmark of kriging-based
+            infill criteria for noisy optimization.
             """
 
             def obj(x):
@@ -1391,7 +1448,7 @@ class NonCons:
             self.lb = np.zeros(6).tolist()
             self.ub = np.ones(6).tolist()
             self.xopt = [0.20169, 0.150011, 0.476874, 0.275332, 0.311652, 0.6573]
-            self.fopt = -3.32237
+            self.fopt = -3.3224
 
         elif name == '6.9 Perm Function':
             
