@@ -62,7 +62,8 @@ def plot(problem):
         plt.figure() # figsize=(12.80, 10.24)
         plt.xlabel('$x_1$')
         plt.ylabel('$x_2$')
-        plt.pcolor(x1_plot, x2_plot, f_plot, cmap=plt.cm.jet) # plt.pcolormesh(x1_plot, x2_plot, f_plot)
+        # plt.pcolor(x1_plot, x2_plot, f_plot, cmap=plt.cm.jet) # plt.pcolormesh(x1_plot, x2_plot, f_plot)
+        plt.contour(x1_plot, x2_plot, f_plot, cmap=plt.cm.jet) # plt.pcolormesh(x1_plot, x2_plot, f_plot)
         plt.colorbar()
 
         if cns is not None:

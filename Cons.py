@@ -3,8 +3,6 @@ Constrained Optimization Problem Collections:
 
 1. http://www-optima.amp.i.kyoto-u.ac.jp/member/student/hedar/Hedar_files/TestGO.htm
 
-1.2 G2 Problem
-1.3 G3 Problem
 1.4 G4 Problem
 1.6 G6 Problem
 1.7 G7 Problem
@@ -54,65 +52,7 @@ class Cons:
 
     def __init__(self, name, dimensions=2):
 
-        if name == '1.2 G2 Problem':
-            
-            self.__doc__ = """
-            1.2 G2 Problem
-
-            Dimensions: 20
-            """
-            
-            # raise TypeError('Problem solution was not ready.')
-
-            def obj(x):
-                x = np.array(x)
-                n = 20
-                sum_jx = 0
-                for j in range(1, n+1):
-                    sum_jx = sum_jx + j*x[j-1]**2
-                y = -abs((sum(np.cos(x)**4.0) - 2.0*np.prod(np.cos(x)**2)) / np.sqrt(sum_jx))
-                return y
-
-            def cns(x):
-                x = np.array(x)
-                n = 20
-                g1 = -np.prod(x) + 0.75
-                g2 = sum(x) - 7.5*n
-                return [g1, g2]
-            
-            self.obj = obj
-            self.cns = cns
-            self.lb = np.zeros(20).tolist()
-            self.ub = (np.ones(20)*10.0).tolist()
-            self.xopt = None
-            self.fopt = 0.803619
-
-        elif name == '1.3 G3 Problem':
-            
-            self.__doc__ = """
-            1.3 G3 Problem
-
-            Dimensions: d
-            """
-
-            def obj(x):
-                n = dimensions
-                y = -np.sqrt(n)**n*np.prod(x)
-                return y
-
-            def cns(x):
-                x = np.array(x)
-                g = abs(sum(x**2)-1)-1e-4
-                return g
-            
-            self.obj = obj
-            self.cns = cns
-            self.lb = np.zeros(dimensions).tolist()
-            self.ub = np.ones(dimensions).tolist()
-            self.xopt = (np.ones(dimensions)*1/math.sqrt(dimensions)).tolist()
-            self.fopt = 1.0
-
-        elif name == '1.4 G4 Problem':
+        if name == '1.4 G4 Problem':
             
             self.__doc__ = """
             1.4 G4 Problem
@@ -331,7 +271,7 @@ class Cons:
             self.lb = [0, 0, 0, 0, 90, 0.01, 145]
             self.ub = [2000, 16000, 120, 5000, 95, 4, 162]
             self.xopt = [1698.1, 15819, 54.107, 3031.2, 95.000, 1.5618, 153.54]
-            self.fopt = 1768.75
+            self.fopt = -1768.75
 
         elif name == '2.2 CAMEL':
 
@@ -359,7 +299,7 @@ class Cons:
             self.lb = [-3, -1.5]
             self.ub = [ 3,  1.5]
             self.xopt = [1.7476, 0.8738]
-            self.fopt = 0.2986
+            self.fopt = 0.29861
 
         elif name == '2.3 FUNC2D':
 
@@ -492,7 +432,7 @@ class Cons:
             self.lb = [0, 0]
             self.ub = [6, 6]
             self.xopt = [4.0, 4.0]
-            self.fopt = 304.0
+            self.fopt = -304.0
 
         elif name == '2.9 KS250':
             
