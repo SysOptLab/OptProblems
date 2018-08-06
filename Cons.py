@@ -578,12 +578,6 @@ class Cons:
 
 if __name__ == '__main__':
 
-    problem = Cons('2.4 GOLDPR')
-    x0 = [0.0, 0.0]
-
-    print('obj(x0) = {}'.format(problem.obj(x0)))
-    print('cns(x0) = {}'.format(problem.cns(x0)))
-    print('lb = {}'.format(problem.lb))
-    print('ub = {}'.format(problem.ub))
-    print('xopt = {}'.format(problem.xopt))
-    print('fopt = {}'.format(problem.fopt))
+    name = '2.4 GOLDPR'
+    problem = Cons(name)
+    problem.plot()

@@ -1659,11 +1659,6 @@ class NonCons:
 
 if __name__ == '__main__':
 
-    problem = NonCons('GOLDPR')
-    x0 = [0.0, 0.0]
-
-    print('obj(x0) = {}'.format(problem.obj(x0)))
-    print('lb = {}'.format(problem.lb))
-    print('ub = {}'.format(problem.ub))
-    print('xopt = {}'.format(problem.xopt))
-    print('fopt = {}'.format(problem.fopt))
+    name = '6.5 Goldstein-Price Function'
+    problem = NonCons(name)
+    problem.plot()
