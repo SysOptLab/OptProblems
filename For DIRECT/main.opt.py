@@ -3,7 +3,7 @@ Demo for using DIRECT optimization algorithm
 """
 
 import DIRECT
-import OptProblems
+import OptProblemSet
 import warnings
 
 warnings.filterwarnings("ignore")
@@ -11,7 +11,7 @@ warnings.filterwarnings("ignore")
 # -- problem
 
 name = '2.5 GOMEZ'
-problem = OptProblems.Cons(name)
+problem = OptProblemSet.Cons(name)
 # name = "6.2 Branin Function"
 # problem = OptProblems.NonCons(name)
 

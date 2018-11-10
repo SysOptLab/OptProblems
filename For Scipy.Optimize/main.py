@@ -1,11 +1,11 @@
 import numpy as np
-import OptProblems
+import OptProblemSet
 import scipy.optimize
 
 # -- problem
 
 name = '2.4 GOLDPR'
-problem = OptProblems.Cons(name)
+problem = OptProblemSet.Cons(name)
 obj = problem.obj
 
 def cns(x):

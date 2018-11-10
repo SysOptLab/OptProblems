@@ -7,7 +7,7 @@ import shutil
 import math
 import matplotlib.pyplot as plt
 import DIRECT
-import OptProblems
+import OptProblemSet
 import warnings
 
 warnings.filterwarnings("ignore")
@@ -135,7 +135,7 @@ for setting in settings:
         else:
             pass
 
-        problem = OptProblems.Cons(name)
+        problem = OptProblemSet.Cons(name)
         print(problem)
         solver = DIRECT.Solver(problem, options=options)
         solver.optimize()
@@ -191,7 +191,7 @@ for setting in settings:
         else:
             pass
 
-        problem = OptProblems.NonCons(name)
+        problem = OptProblemSet.NonCons(name)
         print(problem)
         solver = DIRECT.Solver(problem, options=options)
         solver.optimize()
