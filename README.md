@@ -1,16 +1,16 @@
-﻿# OptProblem
+﻿# opt_problem
 
-Python package for optimization problem collections, created by NTU ME SOLab.
+Optimization problem collections by NTU ME SOLab.
 
 # How to Use
 
 ## Solution
 
 ```python
-import OptProblem
+import opt_problem
 
 name = '2.4 GOLDPR'
-problem = OptProblemSet.Cons(name)
+problem = opt_problem.cons(name)
 
 print('-- solution --')
 print(problem.xopt)
@@ -21,13 +21,13 @@ print(problem.fopt)
 
 ```python
 import numpy as np
-import OptProblem
+import opt_problem
 import scipy.optimize
 
 # -- problem setup
 
 name = '2.4 GOLDPR'
-problem = OptProblemSet.Cons(name)
+problem = opt_problem.cons(name)
 
 def cns(x):
     g = -1.0*np.array(problem.cns(x))
@@ -52,19 +52,18 @@ res = scipy.optimize.minimize(problem.obj, x0, method=method, bounds=bounds,
 ## SOLab DIRECT Algorithm
 
 ```python
-import DIRECT
-import OptProblem
+import direct
+import opt_problem
 import warnings; warnings.filterwarnings("ignore")
 
 # -- problem setup
 
 name = '2.5 GOMEZ'
-problem = OptProblemSet.Cons(name)
+problem = opt_problem.cons(name)
 
 # -- start optimization
 
-options = {}
-solver = DIRECT.Solver(problem, options=options)
+solver = direct.solver(problem)
 solver.optimize()
 ```
 

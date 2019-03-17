@@ -74,7 +74,7 @@ if __package__:
 else:
     import debug_plot
 
-class NonCons:
+class non_cons:
 
     """Non-constrained optimization problem.
 
@@ -611,7 +611,7 @@ class NonCons:
             
             Dimensions: d
 
-            The function is usually evaluated on the hypercube xi ∈ [-d, d], for all i = 1, …, d. 
+            The function is usually evaluated on the hypercube xi [-d, d], for all i = 1, ..., d. 
 
             Global Optimization Test Problems. Retrieved June 2013, from
             http://www-optima.amp.i.kyoto-u.ac.jp/member/student/hedar/Hedar_files/TestGO.htm.
@@ -1177,8 +1177,8 @@ class NonCons:
             Dimensions: 2 
 
             The Branin, or Branin-Hoo, function has three global minima. The recommended values
-            of a, b, c, r, s and t are: a = 1, b = 5.1 ⁄ (4π2), c = 5 ⁄ π, r = 6, s = 10 and
-            t = 1 ⁄ (8π).
+            of a, b, c, r, s and t are: a = 1, b = 5.1 / (4pi2), c = 5 / pi, r = 6, s = 10 and
+            t = 1 ~ (8pi).
 
             1. Dixon, L. C. W., & Szego, G. P. (1978). The global optimization problem: an introduction.
              Towards global optimization, 2, 1-15.
@@ -1457,7 +1457,7 @@ class NonCons:
 
             Dimensions: d 
 
-            The Perm d, β function.
+            The Perm d, beta function.
 
             Global Optimization Test Problems. Retrieved June 2013, from
             http://www-optima.amp.i.kyoto-u.ac.jp/member/student/hedar/Hedar_files/TestGO.htm.
@@ -1493,7 +1493,7 @@ class NonCons:
             Dimensions: 4 
 
             The Shekel function has m local minima. Above are the recommended values of m, 
-            the β-vector and the C-matrix; β is an m-dimensional vector, and C is a 4
+            the beta-vector and the C-matrix; beta is an m-dimensional vector, and C is a 4
             -by-m-dimensional matrix
             """
 
@@ -1534,7 +1534,7 @@ class NonCons:
             Dimensions: 4 
 
             The Shekel function has m local minima. Above are the recommended values of m, 
-            the β-vector and the C-matrix; β is an m-dimensional vector, and C is a 4
+            the beta-vector and the C-matrix; beta is an m-dimensional vector, and C is a 4
             -by-m-dimensional matrix
 
             1. Global Optimization Test Problems. Retrieved June 2013, from
@@ -1581,7 +1581,7 @@ class NonCons:
             Dimensions: 4 
 
             The Shekel function has m local minima. Above are the recommended values of m, 
-            the β-vector and the C-matrix; β is an m-dimensional vector, and C is a 4
+            the beta-vector and the C-matrix; beta is an m-dimensional vector, and C is a 4
             -by-m-dimensional matrix
             """
 
