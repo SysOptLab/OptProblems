@@ -1,2 +1,2 @@
-from .cons import *
-from .non_cons import *
+from .Cons import Cons
+from .NonCons import NonCons

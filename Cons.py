@@ -34,7 +34,7 @@ if __package__:
 else:
     import debug_plot
 
-class cons:
+class Cons:
 
     """Constrained optimization problem.
 

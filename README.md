@@ -10,7 +10,7 @@ Optimization problem collections by NTU ME SOLab.
 import opt_problem
 
 name = '2.4 GOLDPR'
-problem = opt_problem.cons(name)
+problem = opt_problem.Cons(name)
 
 print('-- solution --')
 print(problem.xopt)
@@ -27,7 +27,7 @@ import scipy.optimize
 # -- problem setup
 
 name = '2.4 GOLDPR'
-problem = opt_problem.cons(name)
+problem = opt_problem.Cons(name)
 
 def cns(x):
     g = -1.0*np.array(problem.cns(x))
@@ -59,11 +59,11 @@ import warnings; warnings.filterwarnings("ignore")
 # -- problem setup
 
 name = '2.5 GOMEZ'
-problem = opt_problem.cons(name)
+problem = opt_problem.Cons(name)
 
 # -- start optimization
 
-solver = direct.solver(problem)
+solver = direct.Solver(problem)
 solver.optimize()
 ```
 

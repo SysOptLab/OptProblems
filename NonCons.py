@@ -74,7 +74,7 @@ if __package__:
 else:
     import debug_plot
 
-class non_cons:
+class NonCons:
 
     """Non-constrained optimization problem.
 
