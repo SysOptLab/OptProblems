@@ -26,7 +26,6 @@ Constrained Optimization Problem Collections:
 
 """
 
-import math
 import numpy as np
 
 if __package__:
@@ -36,18 +35,18 @@ else:
 
 class Cons:
 
-    """Constrained optimization problem.
+    """Constrained optimization problem
 
     Args:
-        name (str): Problem's name.
+        name (str): problem's name
 
     Attributes:
-        obj (function): Objective function.
-        cns (function): Constraint function.
-        lb (list): Lower bound of variables.
-        ub (list): Upper bound of variables.
-        xopt (list): Solution's variables.
-        fopt (float): Solution's objective value.
+        obj (func): obj function
+        cns (func): cns function
+        lb (list): lower bound of variables
+        ub (list): upper bound of variables
+        xopt (list): solution's variables
+        fopt (float): solution's obj value
     """
 
     def __init__(self, name, dimensions=2):
@@ -310,11 +309,11 @@ class Cons:
             """
 
             def obj(x):
-                f = 2 + 0.01*(x[1]-x[0]**2)**2 + (1-x[0])**2 + 2*(2-x[1])**2 + 7*math.sin(0.5*x[0])*math.sin(0.7*x[1]*x[0])
+                f = 2 + 0.01*(x[1]-x[0]**2)**2 + (1-x[0])**2 + 2*(2-x[1])**2 + 7*np.sin(0.5*x[0])*np.sin(0.7*x[1]*x[0])
                 return f
 
             def cns(x):
-                g = -math.sin(x[0] - x[1] - math.pi/8.0)
+                g = -np.sin(x[0] - x[1] - np.pi/8.0)
                 return g
 
             self.obj = obj
@@ -341,7 +340,7 @@ class Cons:
                 g1 = 19.0 - 14.0*x[0] + 3.0*x[0]**2 - 14.0*x[1] + 6.0*x[0]*x[1] + 3.0*x[1]**2
                 g2 = 18.0 - 32.0*x[0] + 12.0*x[0]**2 + 48.0*x[1] - 36.0*x[0]*x[1] + 27.0*x[1]**2
                 f = (1.0+((x[0]+x[1]+1.0)**2)*g1)*(30.0+((2.0*x[0]-3.0*x[1])**2)*g2)
-                f = math.log(f)
+                f = np.log(f)
                 return f
 
             def cns(x):
@@ -369,7 +368,7 @@ class Cons:
                 return f
 
             def cns(x):
-                g = -math.sin(4*math.pi*x[0]) + 2*(math.sin(2*math.pi*x[1])**2)
+                g = -np.sin(4*np.pi*x[0]) + 2*(np.sin(2*np.pi*x[1])**2)
                 return g
 
             self.obj = obj
@@ -504,12 +503,12 @@ class Cons:
 
             def cns(x):
                 a = 1.0
-                b = 5.1/(4.0*(math.pi**2))
-                c = 5.0/math.pi
+                b = 5.1/(4.0*(np.pi**2))
+                c = 5.0/np.pi
                 d = 6.0
                 e = 10.0
-                f = 1.0/(8.0*math.pi)
-                branin = a*(x[1] - b*x[0]**2 + c*x[0] - d)**2 + e*(1-f)*math.cos(x[0]) + e
+                f = 1.0/(8.0*np.pi)
+                branin = a*(x[1] - b*x[0]**2 + c*x[0] - d)**2 + e*(1-f)*np.cos(x[0]) + e
                 g = branin - 5.0
                 return g
 

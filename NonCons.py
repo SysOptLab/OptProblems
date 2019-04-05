@@ -66,7 +66,6 @@ Non-constrained optimization problem collections.
 
 """
 
-import math
 import numpy as np
 
 if __package__:
@@ -76,18 +75,18 @@ else:
 
 class NonCons:
 
-    """Non-constrained optimization problem.
+    """Non-constrained optimization problem
 
     Args:
-        name (str): Problem's name.
+        name (str): problem's name
 
     Attributes:
-        obj (function): Objective function.
+        obj (func): objfunction
         cns (None):
-        lb (list): Lower bound of variables.
-        ub (list): Upper bound of variables.
-        xopt (list): Solution's variables.
-        fopt (float): Solution's objective value.
+        lb (list): lower bound of variables
+        ub (list): upper bound of variables
+        xopt (list): solution's variables
+        fopt (float): solution's obj value
     """
 
     def __init__(self, name, dimensions=2):
@@ -119,15 +118,15 @@ class NonCons:
                 d = dimensions
                 a = 20.0
                 b = 0.2
-                c = 2.0*math.pi
+                c = 2.0*np.pi
                 sum1 = 0.0
                 sum2 = 0.0
                 for xi in x:
                     sum1 = sum1 + xi**2.0
-                    sum2 = sum2 + math.cos(c*xi)
-                term1 = - a * math.exp(-b*math.sqrt(sum1/d))
-                term2 = - math.exp(sum2/d)
-                y = term1 + term2 + a + math.exp(1)
+                    sum2 = sum2 + np.cos(c*xi)
+                term1 = - a * np.exp(-b*np.sqrt(sum1/d))
+                term2 = - np.exp(sum2/d)
+                y = term1 + term2 + a + np.exp(1)
                 return y
 
             self.obj = obj
@@ -153,7 +152,7 @@ class NonCons:
             def obj(x):
                 x1 = x[0]
                 x2 = x[1]
-                term1 = 100.0 * math.sqrt(abs(x2 - 0.01*x1**2))
+                term1 = 100.0 * np.sqrt(abs(x2 - 0.01*x1**2))
                 term2 = 0.01 * abs(x1 + 10.0)
                 y = term1 + term2
                 return y
@@ -183,8 +182,8 @@ class NonCons:
             def obj(x):
                 x1 = x[0]
                 x2 = x[1]
-                fact1 = math.sin(x1)*math.sin(x2)
-                fact2 = math.exp(abs(100.0 - math.sqrt(x1**2+x2**2)/math.pi))
+                fact1 = np.sin(x1)*np.sin(x2)
+                fact2 = np.exp(abs(100.0 - np.sqrt(x1**2+x2**2)/np.pi))
                 y = - 0.0001 * (abs(fact1*fact2)+1.0)**0.1
                 return y
 
@@ -213,7 +212,7 @@ class NonCons:
             def obj(x):
                 x1 = x[0]
                 x2 = x[1]
-                frac1 = 1.0 + math.cos(12.0*math.sqrt(x1**2+x2**2))
+                frac1 = 1.0 + np.cos(12.0*np.sqrt(x1**2+x2**2))
                 frac2 = 0.5*(x1**2+x2**2) + 2.0
                 y = - frac1/frac2
                 return y
@@ -242,8 +241,8 @@ class NonCons:
             def obj(x):
                 x1 = x[0]
                 x2 = x[1]
-                term1 = -(x2+47.0) * math.sin(math.sqrt(abs(x2+x1/2.0+47.0)))
-                term2 = -x1 * math.sin(math.sqrt(abs(x1-(x2+47.0))))
+                term1 = -(x2+47.0) * np.sin(np.sqrt(abs(x2+x1/2.0+47.0)))
+                term2 = -x1 * np.sin(np.sqrt(abs(x1-(x2+47.0))))
                 y = term1 + term2
                 return y
 
@@ -306,7 +305,7 @@ class NonCons:
                 for ii in range(1, d+1):
                     xi = x[ii-1]
                     total = total + (xi**2)/4000.0
-                    prod = prod * math.cos(xi/math.sqrt(ii))
+                    prod = prod * np.cos(xi/np.sqrt(ii))
                 f = total - prod + 1
                 return f
 
@@ -335,8 +334,8 @@ class NonCons:
             def obj(x):
                 x1 = x[0]
                 x2 = x[1]
-                fact1 = math.sin(x1)*math.cos(x2)
-                fact2 = math.exp(abs(1.0 - math.sqrt(x1**2+x2**2)/math.pi))
+                fact1 = np.sin(x1)*np.cos(x2)
+                fact2 = np.exp(abs(1.0 - np.sqrt(x1**2+x2**2)/np.pi))
                 f = - abs(fact1*fact2)
                 return f
 
@@ -368,12 +367,12 @@ class NonCons:
                 w = []
                 for ii in range(2):
                     w.append(1.0 + (x[ii] - 1.0)/4.0)
-                term1 = (math.sin(math.pi*w[0]))**2
-                term3 = (w[d-1]-1.0)**2 * (1.0+(math.sin(2*math.pi*w[d-1]))**2)
+                term1 = (np.sin(np.pi*w[0]))**2
+                term3 = (w[d-1]-1.0)**2 * (1.0+(np.sin(2*np.pi*w[d-1]))**2)
                 total = 0
                 for ii in range(1):
                     wi = w[ii]
-                    new = (wi-1.0)**2 * (1.0+10.0*(math.sin(math.pi*wi+1))**2)
+                    new = (wi-1.0)**2 * (1.0+10.0*(np.sin(np.pi*wi+1))**2)
                     total = total + new
                 f = term1 + total + term3
                 return f
@@ -401,9 +400,9 @@ class NonCons:
             def obj(x):
                 x1 = x[0]
                 x2 = x[1]
-                term1 = (math.sin(3*math.pi*x1))**2
-                term2 = (x1-1.0)**2 * (1+(math.sin(3*math.pi*x2))**2)
-                term3 = (x2-1.0)**2 * (1+(math.sin(2*math.pi*x2))**2)
+                term1 = (np.sin(3*np.pi*x1))**2
+                term2 = (x1-1.0)**2 * (1+(np.sin(3*np.pi*x2))**2)
+                term3 = (x2-1.0)**2 * (1+(np.sin(2*np.pi*x2))**2)
                 f = term1 + term2 + term3;
                 return f
 
@@ -435,7 +434,7 @@ class NonCons:
                 d = dimensions
                 total = 0
                 for xi in x:
-                    total = total + (xi**2 - 10.0*math.cos(2.0*math.pi*xi))
+                    total = total + (xi**2 - 10.0*np.cos(2.0*np.pi*xi))
                 f = 10.0*d + total
                 return f
 
@@ -462,7 +461,7 @@ class NonCons:
             def obj(x):
                 x1 = x[0]
                 x2 = x[1]
-                fact1 = (math.sin(x1**2-x2**2))**2 - 0.5
+                fact1 = (np.sin(x1**2-x2**2))**2 - 0.5
                 fact2 = (1.0 + 0.001*(x1**2+x2**2))**2
                 f = 0.5 + fact1/fact2;
                 return f
@@ -490,7 +489,7 @@ class NonCons:
             def obj(x):
                 x1 = x[0]
                 x2 = x[1]
-                fact1 = math.cos(math.sin(abs(x1**2-x2**2))) - 0.5
+                fact1 = np.cos(np.sin(abs(x1**2-x2**2))) - 0.5
                 fact2 = (1.0 + 0.001*(x1**2+x2**2))**2
                 f = 0.5 + fact1/fact2
                 return f
@@ -527,7 +526,7 @@ class NonCons:
                 total = 0
                 for ii in range(d):
                     xi = x[ii]
-                    total = total + xi*math.sin(math.sqrt(abs(xi)))
+                    total = total + xi*np.sin(np.sqrt(abs(xi)))
                 f = 418.9829*d - total
                 return f
 
@@ -557,8 +556,8 @@ class NonCons:
                 sum1 = 0
                 sum2 = 0
                 for ii in range(1, 6):
-                    new1 = ii * math.cos((ii+1)*x1+ii)
-                    new2 = ii * math.cos((ii+1)*x2+ii)
+                    new1 = ii * np.cos((ii+1)*x1+ii)
+                    new2 = ii * np.cos((ii+1)*x2+ii)
                     sum1 = sum1 + new1
                     sum2 = sum2 + new2
                 y = sum1 * sum2
@@ -591,8 +590,8 @@ class NonCons:
 
                 term1 = x1**2
                 term2 = 2*x2**2
-                term3 = -0.3 * math.cos(3*math.pi*x1)
-                term4 = -0.4 * math.cos(4*math.pi*x2)
+                term3 = -0.3 * np.cos(3*np.pi*x1)
+                term4 = -0.4 * np.cos(4*np.pi*x2)
 
                 y = term1 + term2 + term3 + term4 + 0.7
                 return y
@@ -885,7 +884,7 @@ class NonCons:
             def obj(x):
                 x1 = x[0]
                 x2 = x[1]
-                term1 = math.sin(x1 + x2)
+                term1 = np.sin(x1 + x2)
                 term2 = (x1 - x2)**2
                 term3 = -1.5*x1
                 term4 = 2.5*x2
@@ -1089,8 +1088,8 @@ class NonCons:
             def obj(x):
                 x1 = x[0]
                 x2 = x[1]
-                fact1 = -math.cos(x1)*math.cos(x2)
-                fact2 = math.exp(-(x1-math.pi)**2-(x2-math.pi)**2)
+                fact1 = -np.cos(x1)*np.cos(x2)
+                fact2 = np.exp(-(x1-np.pi)**2-(x2-np.pi)**2)
                 y = fact1*fact2
                 return y
 
@@ -1098,7 +1097,7 @@ class NonCons:
             self.cns = None
             self.lb = [-100.0, -100.0]
             self.ub = [100.0, 100.0]
-            self.xopt = [math.pi, math.pi]
+            self.xopt = [np.pi, np.pi]
             self.fopt = -1.0
 
         elif name == '5.3 Michalewicz Function':
@@ -1127,7 +1126,7 @@ class NonCons:
 
                 for ii in range(1, d+1):
                     xi = x[ii-1]
-                    new = math.sin(xi) * (math.sin(ii*xi**2/math.pi))**(2*m)
+                    new = np.sin(xi) * (np.sin(ii*xi**2/np.pi))**(2*m)
                     sum  = sum + new
 
                 y = -sum
@@ -1136,7 +1135,7 @@ class NonCons:
             self.obj = obj
             self.cns = None
             self.lb = np.zeros(dimensions).tolist()
-            self.ub = (np.ones(dimensions)*math.pi).tolist()
+            self.ub = (np.ones(dimensions)*np.pi).tolist()
             self.xopt = [2.20, 1.57]
             self.fopt = -1.8013
 
@@ -1193,14 +1192,14 @@ class NonCons:
             """
 
             def obj(x):
-                y = (x[1]-(5.1/(4*math.pi**2))*x[0]**2+5*x[0]/math.pi-6)**2+10*(1-1/(8*math.pi))*np.cos(x[0])+10;
+                y = (x[1]-(5.1/(4*np.pi**2))*x[0]**2+5*x[0]/np.pi-6)**2+10*(1-1/(8*np.pi))*np.cos(x[0])+10;
                 return y
 
             self.obj = obj
             self.cns = None
             self.lb = [-5, 0]
             self.ub = [10, 15]
-            self.xopt = [[-math.pi, 12.275], [math.pi, 2.275], [9.42478, 2.475]]
+            self.xopt = [[-np.pi, 12.275], [np.pi, 2.275], [9.42478, 2.475]]
             self.fopt = 0.3979
 
         elif name == '6.3 Colville Function':
@@ -1332,7 +1331,7 @@ class NonCons:
                         Aij = A[ii, jj]
                         Pij = P[ii, jj]
                         inner = inner + Aij*(xj-Pij)**2
-                    new = alpha[ii] * math.exp(-inner)
+                    new = alpha[ii] * np.exp(-inner)
                     outer = outer + new
                 f = - outer
                 return f
@@ -1386,7 +1385,7 @@ class NonCons:
                     sm = 0
                     for j in range(1, 5):
                         sm = sm+a[i-1,j-1]*(x[j-1]-p[i-1,j-1])**2
-                    s = s+c[i-1]*math.exp(-sm)
+                    s = s+c[i-1]*np.exp(-sm)
                 s = 1.0/0.839 * (1.1 - s)
                 y = s
                 return y
@@ -1438,7 +1437,7 @@ class NonCons:
                     sm = 0
                     for j in range(1, 7):
                         sm = sm+a[i-1,j-1]*(x[j-1]-p[i-1,j-1])**2
-                    s = s+c[i-1]*math.exp(-sm)
+                    s = s+c[i-1]*np.exp(-sm)
 
                 y = -s
                 return y
