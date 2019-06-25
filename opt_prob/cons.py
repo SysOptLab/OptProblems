@@ -28,24 +28,20 @@ Constrained Optimization Problem Collections:
 
 import numpy as np
 
-if __package__:
-    from . import debug_plot
-else:
-    import debug_plot
 
 class Cons:
 
-    """Constrained optimization problem
-
+    """
+    Descriptions:
+        Constrained optimization problem
     Args:
         name (str): problem's name
-
     Attributes:
         obj (func): obj function
         cns (func): cns function
-        lb (list): lower bound of variables
-        ub (list): upper bound of variables
-        xopt (list): solution's variables
+        lb (List[float]): lower bound of variables
+        ub (List[float]): upper bound of variables
+        xopt (List[float]): solution's variables
         fopt (float): solution's obj value
     """
 
@@ -543,40 +539,12 @@ class Cons:
             self.ub = [10, 10]
             self.xopt = [3.1139, 2.0627]
             self.fopt = 5.1766
-        
-        elif name == '':
-            
-            self.__doc__ = """
-            """
-
-            def obj(x):
-                return y
-
-            def cns(x):
-                return []
-            
-            self.obj = obj
-            self.cns = cns
-            self.lb = []
-            self.ub = []
-            self.xopt = None
-            self.fopt = None
 
         else:
             raise "Unkown problem name."
-
-    def plot(self):
-        debug_plot.plot(self)
 
     def __str__(self):
         string = ''
         for line in self.__doc__.split('\n'):
             string += line.lstrip() + '\n'
         return string
-
-
-if __name__ == '__main__':
-
-    name = '2.4 GOLDPR'
-    problem = Cons(name)
-    problem.plot()

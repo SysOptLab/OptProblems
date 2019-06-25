@@ -68,24 +68,20 @@ Non-constrained optimization problem collections.
 
 import numpy as np
 
-if __package__:
-    from . import debug_plot
-else:
-    import debug_plot
 
 class NonCons:
 
-    """Non-constrained optimization problem
-
+    """
+    Descriptions:
+        Non-constrained optimization problem
     Args:
         name (str): problem's name
-
     Attributes:
         obj (func): objfunction
         cns (None):
-        lb (list): lower bound of variables
-        ub (list): upper bound of variables
-        xopt (list): solution's variables
+        lb (List[float]): lower bound of variables
+        ub (List[float]): upper bound of variables
+        xopt (List[float]): solution's variables
         fopt (float): solution's obj value
     """
 
@@ -1621,7 +1617,6 @@ class NonCons:
             Dimensions: d 
 
             The Styblinski-Tang function is shown here in its two-dimensional form. 
-
             """
 
             def obj(x):
@@ -1645,19 +1640,8 @@ class NonCons:
         else:
             raise "Unkown problem name."
 
-    def plot(self):
-        debug_plot.plot(self)
-
     def __str__(self):
         string = ''
         for line in self.__doc__.split('\n'):
             string += line.lstrip() + '\n'
         return string
-
-# --
-
-if __name__ == '__main__':
-
-    name = '6.5 Goldstein-Price Function'
-    problem = NonCons(name)
-    problem.plot()

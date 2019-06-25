@@ -1,33 +1,77 @@
-﻿# opt_problem
+﻿# opt-prob-collection
 
 Optimization problem collections by NTU ME SOLab.
 
-# How to Use
+## Requirement
 
-## Solution
+```
+python 2.7 or 3
+---
+numpy
+matplotlib
+```
+
+## How to Use
+
+### Solution
 
 ```python
-import opt_problem
+import opt_prob
 
 name = '2.4 GOLDPR'
-problem = opt_problem.Cons(name)
+problem = opt_prob.Cons(name)
 
-print('-- solution --')
+print('-- Problem --')
+print(problem)
+print('-- Solution --')
 print(problem.xopt)
 print(problem.fopt)
 ```
 
-## scipy.optimize
+```
+>>>
+-- Problem --
+
+2.4 GOLDPR
+
+Dimensions: 2
+
+Goldstein Price
+L.Pronzato, E.Walter, A.Venot, and J.F.Lebruchec. "A general purpose global
+optimizer: Implementation and applicaitons". Mathematics and Computers in Simulation,
+26:412-422, 1984.
+
+
+-- Solution --
+[0.5955, -0.4045]
+5.6694
+```
+
+### Ploting
+
+```python
+import opt_prob
+
+name = '2.4 GOLDPR'
+problem = opt_prob.Cons(name)
+
+opt_prib.plot(problem)
+```
+
+![](./demo2-1.png)
+![](./demo2-2.png)
+
+### scipy.optimize
 
 ```python
 import numpy as np
-import opt_problem
+import opt_prob
 import scipy.optimize
 
 # -- problem setup
 
 name = '2.4 GOLDPR'
-problem = opt_problem.Cons(name)
+problem = opt_prob.Cons(name)
 
 def cns(x):
     g = -1.0*np.array(problem.cns(x))
@@ -49,17 +93,16 @@ res = scipy.optimize.minimize(problem.obj, x0, method=method, bounds=bounds,
                               constraints=ineq_cons, options=options)
 ```
 
-## SOLab DIRECT Algorithm
+### SOLab DIRECT Algorithm
 
 ```python
 import direct
-import opt_problem
-import warnings; warnings.filterwarnings("ignore")
+import opt_prob
 
 # -- problem setup
 
 name = '2.5 GOMEZ'
-problem = opt_problem.Cons(name)
+problem = opt_prob.Cons(name)
 
 # -- start optimization
 
@@ -67,7 +110,7 @@ solver = direct.Solver(problem)
 solver.optimize()
 ```
 
-# Reference
+## Reference
 
 1. https://www.sfu.ca/~ssurjano/optimization.html
 2. http://infinity77.net/global_optimization/test_functions.html#test-functions-index
