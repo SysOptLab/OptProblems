@@ -1,29 +1,5 @@
 """
 Constrained Optimization Problem Collections:
-
-1. http://www-optima.amp.i.kyoto-u.ac.jp/member/student/hedar/Hedar_files/TestGO.htm
-
-1.4 G4 Problem
-1.6 G6 Problem
-1.7 G7 Problem
-1.8 G8 Problem
-1.9 G9 Problem
-1.10 G10 Problem
-
-2. Others
-
-2.1 ALKYLATION
-2.2 CAMEL
-2.3 FUNC2D
-2.4 GOLDPR
-2.5 GOMEZ
-2.6 HS23
-2.8 KS224
-2.9 KS250
-2.10 KS346
-2.11 NEWBRANIN
-2.12 PRES
-
 """
 
 import numpy as np
@@ -44,6 +20,26 @@ class Cons:
         xopt (List[float]): solution's variables
         fopt (float): solution's obj value
     """
+
+    names = [
+        "1.4 G4 Problem",
+        "1.6 G6 Problem",
+        "1.7 G7 Problem",
+        "1.8 G8 Problem",
+        "1.9 G9 Problem", 
+        "1.10 G10 Problem",
+        "2.1 ALKYLATION",
+        "2.2 CAMEL",
+        "2.3 FUNC2D",
+        "2.4 GOLDPR",
+        "2.5 GOMEZ",
+        "2.6 HS23",
+        "2.8 KS224",
+        "2.9 KS250",
+        "2.10 KS346",
+        "2.11 NEWBRANIN",
+        "2.12 PRES"
+        ]
 
     def __init__(self, name, dimensions=2):
 

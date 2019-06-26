@@ -1,71 +1,12 @@
 """
 Non-constrained optimization problem collections.
-
 1. Many Local Minima
-
-1.1 Ackley Function
-1.2 Bukin Function N. 6
-1.3 Cross-in-Tray Function
-1.4 Drop-Wave Function
-1.5 Eggholder Function
-1.6 Gramacy and Lee (2012) Function
-1.7 Griewank Function
-1.8 Holder Table Function
-1.10 Levy Function
-1.11 Levy Function N. 13
-1.12 Rastrigin Function
-1.13 Schaffer Function N. 2
-1.14 Schaffer Function N. 4
-1.15 Schwefel Function
-1.16 Shubert Function
-
 2. Bowl-Shaped
-
-2.1 Bohachevsky Function
-2.2 Perm Function
-2.3 Rotated Hyper-Ellipsoid Function
-2.4 Sphere Function Modified
-2.5 Sum of Different Powers Function
-2.6 Sum Squares Function
-2.7 Trid Function
-
 3. Plate-Shaped
-
-3.1 Booth Function
-3.2 Matyas Function
-3.3 McCormick Function
-3.5 Zakharov Function
-
 4. Valley-Shaped
-
-4.1 Three-Hump Camel Function
-4.2 Six-Hump Camel Function
-4.3 Dixon-Price Function
-4.4 Rosenbrock Function
-
 5. Steep Ridges/Drops
-
-5.2 Easom Function
-5.3 Michalewicz Function
-
 6. Other
-
-6.1 Beale Function
-6.2 Branin Function
-6.3 Colville Function
-6.4 Forrester et al. (2008) Function
-6.5 Goldstein-Price Function
-6.6 Hartmann 3-D Function
-6.7 Hartmann 4-D Function
-6.8 Hartmann 6-D Function
-6.9 Perm Function
-6.11 Shekel Function 5
-6.12 Shekel Function 7
-6.13 Shekel Function 10
-6.14 Styblinski-Tang Function
-
 """
-
 import numpy as np
 
 
@@ -85,6 +26,54 @@ class NonCons:
         fopt (float): solution's obj value
     """
 
+    names = [
+        "1.1 Ackley Function", 
+        "1.2 Bukin Function N. 6", 
+        "1.3 Cross-in-Tray Function", 
+        "1.4 Drop-Wave Function", 
+        "1.5 Eggholder Function", 
+        "1.6 Gramacy and Lee (2012) Function", 
+        "1.7 Griewank Function", 
+        "1.8 Holder Table Function", 
+        "1.10 Levy Function", 
+        "1.11 Levy Function N. 13", 
+        "1.12 Rastrigin Function", 
+        "1.13 Schaffer Function N. 2", 
+        "1.14 Schaffer Function N. 4", 
+        "1.15 Schwefel Function", 
+        "1.16 Shubert Function", 
+        "2.1 Bohachevsky Function", 
+        "2.2 Perm Function", 
+        "2.3 Rotated Hyper-Ellipsoid Function", 
+        "2.4 Sphere Function Modified", 
+        "2.5 Sum of Different Powers Function", 
+        "2.6 Sum Squares Function", 
+        "2.7 Trid Function", 
+        "3.1 Booth Function", 
+        "3.2 Matyas Function", 
+        "3.3 McCormick Function", 
+        "3.5 Zakharov Function", 
+        "4.1 Three-Hump Camel Function", 
+        "4.2 Six-Hump Camel Function", 
+        "4.3 Dixon-Price Function", 
+        "4.4 Rosenbrock Function", 
+        "5.2 Easom Function", 
+        "5.3 Michalewicz Function", 
+        "6.1 Beale Function", 
+        "6.2 Branin Function", 
+        "6.3 Colville Function", 
+        "6.4 Forrester et al. (2008) Function", 
+        "6.5 Goldstein-Price Function", 
+        "6.6 Hartmann 3-D Function", 
+        "6.7 Hartmann 4-D Function", 
+        "6.8 Hartmann 6-D Function", 
+        "6.9 Perm Function", 
+        "6.11 Shekel Function 5", 
+        "6.12 Shekel Function 7", 
+        "6.13 Shekel Function 10", 
+        "6.14 Styblinski-Tang Function", 
+        ]
+        
     def __init__(self, name, dimensions=2):
 
         if name == '1.1 Ackley Function':

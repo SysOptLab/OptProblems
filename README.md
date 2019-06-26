@@ -13,6 +13,23 @@ matplotlib
 
 ## How to Use
 
+### Problem list
+
+```python
+import opt_prob
+
+print(opt_prob.Cons.names)
+print(opt_prob.NonCons.names)
+```
+
+```
+>>>
+-- Constrained Problem --
+['1.4 G4 Problem', '1.6 G6 Problem', '1.7 G7 Problem', '1.8 G8 Problem', '1.9 G9 Problem', '1.10 G10 Problem', '2.1 ALKYLATION', '2.2 CAMEL', '2.3 FUNC2D', '2.4 GOLDPR', '2.5 GOMEZ', '2.6 HS23', '2.8 KS224', '2.9 KS250', '2.10 KS346', '2.11 NEWBRANIN', '2.12 PRES']
+-- Non-Constrained Problem --
+['1.1 Ackley Function', '1.2 Bukin Function N. 6', '1.3 Cross-in-Tray Function', '1.4 Drop-Wave Function', '1.5 Eggholder Function', '1.6 Gramacy and Lee (2012) Function', '1.7 Griewank Function', '1.8 Holder Table Function', '1.10 Levy Function', '1.11 Levy Function N. 13', '1.12 Rastrigin Function', '1.13 Schaffer Function N. 2', '1.14 Schaffer Function N. 4', '1.15 Schwefel Function', '1.16 Shubert Function', '2.1 Bohachevsky Function', '2.2 Perm Function', '2.3 Rotated Hyper-Ellipsoid Function', '2.4 Sphere Function Modified', '2.5 Sum of Different Powers Function', '2.6 Sum Squares Function', '2.7 Trid Function', '3.1 Booth Function', '3.2 Matyas Function', '3.3 McCormick Function', '3.5 Zakharov Function', '4.1 Three-Hump Camel Function', '4.2 Six-Hump Camel Function', '4.3 Dixon-Price Function', '4.4 Rosenbrock Function', '5.2 Easom Function', '5.3 Michalewicz Function', '6.1 Beale Function', '6.2 Branin Function', '6.3 Colville Function', '6.4 Forrester et al. (2008) Function', '6.5 Goldstein-Price Function', '6.6 Hartmann 3-D Function', '6.7 Hartmann 4-D Function', '6.8 Hartmann 6-D Function', '6.9 Perm Function', '6.11 Shekel Function 5', '6.12 Shekel Function 7', '6.13 Shekel Function 10', '6.14 Styblinski-Tang Function']
+```
+
 ### Solution
 
 ```python
@@ -55,11 +72,11 @@ import opt_prob
 name = '2.4 GOLDPR'
 problem = opt_prob.Cons(name)
 
-opt_prib.plot(problem)
+opt_prob.plot(problem)
 ```
 
-![](./demo2-1.png)
-![](./demo2-2.png)
+![](./pic1.png)
+![](./pic2.png)
 
 ### scipy.optimize
 
